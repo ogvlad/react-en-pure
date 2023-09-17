@@ -1,22 +1,13 @@
 import * as React from "react"
-import * as ReactDOM from "react-dom/client"
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom"
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-]);
+import "./main.css"
 
-export const Root = () => {
+export const Root = (props: React.PropsWithChildren) => {
   return (
-    <div>
-      <h1>Home</h1>
-      <p>This is the home page</p>
+    <div className={"container"}>
+      <div className={"center-block"}>
+      {props.children}
+      </div>
     </div>
   )
 }

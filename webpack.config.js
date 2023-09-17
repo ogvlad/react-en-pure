@@ -17,12 +17,21 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                mode: "global",
+                namedExport: true,
+              },
+            },
+          }],
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js", ".jsx", ".css"],
   },
   plugins: [
     new HtmlWebpackPlugin({
