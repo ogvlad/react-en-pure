@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./build/",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "es6",
@@ -8,7 +8,9 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
