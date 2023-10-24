@@ -4,6 +4,7 @@ import { Root } from "../../Root"
 import { useForm } from "react-hook-form"
 import { FormControl } from "@mui/base/FormControl"
 import Draggable from "react-draggable"
+import DataGridDemo from "../Notes"
 
 export const HomePage = () => {
   
@@ -34,6 +35,8 @@ export const HomePage = () => {
           <div>This readme is really dragging on...</div>
         </div>
       </Draggable>
+      
+      <DataGridDemo />
       
       <FormControl defaultValue="" required>
         {/*<CustomInput />*/}
