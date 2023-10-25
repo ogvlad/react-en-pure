@@ -5,20 +5,13 @@ import { DraggableProvided, DraggableStateSnapshot, Draggable } from "react-beau
 export const CustomRow = (props: any) => {
   
   const { row } = props
-  console.debug("CustomRow", props)
+  // console.debug("CustomRow", props)
   
   // if (!ctx.state.isDragging) return <GridRow {...props} />
   
   // if (!row.isSection && row.treeDataPath && row.treeDataPath.length === 1) return "Assessments-ItemRow"
   // if (row.isSection && row.treeDataPath && row.treeDataPath.length === 1) return "Assessments-ItemRow Assessments-SectionTitle"
   // if (row.treeDataPath && row.treeDataPath.length > 1) return null
-  
-  const onStart = () => {
-  }
-  const onDrag = () => {
-  }
-  const onStop = () => {
-  }
   
   return (
     <Draggable draggableId={row.id} index={props.index}>
