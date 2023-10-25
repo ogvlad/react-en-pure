@@ -1,6 +1,6 @@
 import { Id, Column, ColumnMap, Entities } from "./types"
 import { DraggableLocation } from "react-beautiful-dnd"
-// import reorder from "../reorder"
+import reorder from "./reorder"
 // import { invariant } from "../../../src/invariant"
 
 interface Args {
@@ -31,12 +31,12 @@ const reorderSingleDrag = ({
   // moving in the same list
   if (source.droppableId === destination.droppableId) {
     const column: Column = entities.columns[source.droppableId]
-    // const reordered: Id[] = reorder(
-    //   column.taskIds,
-    //   source.index,
-    //   destination.index,
-    // )
-    const reordered = column.taskIds
+    const reordered: Id[] = reorder(
+      column.taskIds,
+      source.index,
+      destination.index,
+    )
+    // const reordered = column.taskIds
     const updated: Entities = {
       ...entities,
       columns: {
