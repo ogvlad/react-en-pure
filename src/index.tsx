@@ -11,14 +11,19 @@ import "@fontsource/roboto/700.css"
 import { HomePage } from "./features/HomePage"
 import { Root } from "./Root"
 import { TheTasks } from "./features/Tasks"
+import { TheNotes } from "./features/Notes"
 
 const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <HomePage />
-  // },
   {
     path: "/",
+    element: <HomePage />
+  },
+  {
+    path: "/notes",
+    element: <TheNotes />
+  },
+  {
+    path: "/tasks",
     element: <TheTasks />
   },
 ])
