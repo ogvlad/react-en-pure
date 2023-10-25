@@ -1,6 +1,6 @@
 import * as React from "react"
 import Button from "@mui/material/Button"
-import { Root } from "../../Root"
+import { Root } from "../../shared/Root"
 import { useForm } from "react-hook-form"
 import { FormControl } from "@mui/base/FormControl"
 import Draggable from "react-draggable"

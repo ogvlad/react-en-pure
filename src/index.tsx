@@ -9,7 +9,6 @@ import "@fontsource/roboto/500.css"
 import "@fontsource/roboto/700.css"
 
 import { HomePage } from "./features/HomePage"
-import { Root } from "./Root"
 import { TheTasks } from "./features/Tasks"
 import { TheNotes } from "./features/Notes"
 

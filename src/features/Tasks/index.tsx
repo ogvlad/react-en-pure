@@ -5,6 +5,7 @@ import { Task, Id, Entities } from "./types"
 import Column from "./column"
 import { initialData } from "./data"
 import { mutliDragAwareReorder, multiSelectTo as multiSelect, Result as ReorderResult } from './utils';
+import { Root } from "../../shared/Root"
 
 const Container = styled.div`
   display: flex;
@@ -194,24 +195,26 @@ export const TheTasks = () => {
   }, [])
   
   return (
-    <DragDropContext
-      onDragStart={onDragStart}
-      onDragEnd={onDragEnd}
-    >
-      <Container>
-        {entities.columnOrder.map((columnId: Id) => (
-          <Column
-            column={entities.columns[columnId]}
-            tasks={getTasks(entities, columnId)}
-            selectedTaskIds={selectedTaskIds}
-            key={columnId}
-            draggingTaskId={state.draggingTaskId}
-            toggleSelection={toggleSelection}
-            toggleSelectionInGroup={toggleSelectionInGroup}
-            multiSelectTo={multiSelectTo}
-          />
-        ))}
-      </Container>
-    </DragDropContext>
+    <Root>
+      <DragDropContext
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
+      >
+        <Container>
+          {entities.columnOrder.map((columnId: Id) => (
+            <Column
+              column={entities.columns[columnId]}
+              tasks={getTasks(entities, columnId)}
+              selectedTaskIds={selectedTaskIds}
+              key={columnId}
+              draggingTaskId={state.draggingTaskId}
+              toggleSelection={toggleSelection}
+              toggleSelectionInGroup={toggleSelectionInGroup}
+              multiSelectTo={multiSelectTo}
+            />
+          ))}
+        </Container>
+      </DragDropContext>
+    </Root>
   )
 }
