@@ -22,6 +22,7 @@ export const CustomRow = (props: any) => {
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            style={{ ...provided.draggableProps.style, position: 'static' }}
           />)
       }}
     </Draggable>
