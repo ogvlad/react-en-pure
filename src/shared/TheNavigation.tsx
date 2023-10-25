@@ -5,6 +5,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction"
 import RestoreIcon from "@mui/icons-material/Restore"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 import LocationOnIcon from "@mui/icons-material/LocationOn"
+import BookIcon from "@mui/icons-material/Book"
 import PersonIcon from "@mui/icons-material/Person"
 import { useNavigate } from "react-router-dom"
 
@@ -25,6 +26,7 @@ export function TheNavigation() {
       >
         <BottomNavigationAction label="Home" value={"/"} icon={<RestoreIcon />} />
         <BottomNavigationAction label="Notes" value={"/notes"} icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="Books" value={"/books"} icon={<BookIcon />} />
         <BottomNavigationAction label="Tasks" value={"/tasks"} icon={<LocationOnIcon />} />
         {/*<BottomNavigationAction label="Users" value={"/users"} icon={<PersonIcon />} />*/}
       </BottomNavigation>
