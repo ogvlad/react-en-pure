@@ -5,7 +5,7 @@ import { colors } from "@atlaskit/theme"
 import { grid, borderRadius } from "./constants"
 import Task from "./task"
 import { DroppableProvided, DroppableStateSnapshot, Droppable } from "react-beautiful-dnd"
-import { Task as TaskType, Id, Column as ColumnType } from "../../types"
+import { Task as TaskType, Id, Column as ColumnType } from "./types"
 
 // $ExpectError - not sure why
 const Container = styled.div`

@@ -1,4 +1,4 @@
-import { Id, Column, ColumnMap, Entities } from "../../types"
+import { Id, Column, ColumnMap, Entities } from "./types"
 import { DraggableLocation } from "react-beautiful-dnd"
 // import reorder from "../reorder"
 // import { invariant } from "../../../src/invariant"

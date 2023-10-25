@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 import { colors } from "@atlaskit/theme"
 import { grid, borderRadius } from "./constants"
 import { DraggableProvided, DraggableStateSnapshot, Draggable } from "react-beautiful-dnd"
-import { Id, Task as TaskType } from "../../types"
+import { Id, Task as TaskType } from "./types"
 
 // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button
 const primaryButton = 0

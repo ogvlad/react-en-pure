@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from "react"
 import styled from "@emotion/styled"
 import { DragDropContext, DraggableLocation, DragStart, DropResult } from "react-beautiful-dnd"
-import { Task, Id, Entities } from "../../types"
+import { Task, Id, Entities } from "./types"
 import Column from "./column"
 import { initialData } from "./data"
 import { mutliDragAwareReorder, multiSelectTo as multiSelect, Result as ReorderResult } from './utils';
