@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { GridRow } from "@mui/x-data-grid"
-import Draggable from "react-draggable"
+import { DraggableProvided, DraggableStateSnapshot, Draggable } from "react-beautiful-dnd"
 
 export const CustomRow = (props: any) => {
   
   const { row } = props
-  console.debug("CustomRow", row)
+  console.debug("CustomRow", props)
   
   // if (!ctx.state.isDragging) return <GridRow {...props} />
   
@@ -21,14 +21,16 @@ export const CustomRow = (props: any) => {
   }
   
   return (
-    // @ts-ignore
-    <Draggable
-      axis="y"
-      onStart={onStart}
-      onDrag={onDrag}
-      onStop={onStop}
-    >
-      <GridRow {...props} />
+    <Draggable draggableId={row.id} index={props.index}>
+      {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => {
+        return (
+          <GridRow
+            {...props}
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          />)
+      }}
     </Draggable>
   )
 }
