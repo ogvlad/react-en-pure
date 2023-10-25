@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react"
+import React, { Component, useEffect, useState } from "react"
 import styled from "@emotion/styled"
 import { DragDropContext, DraggableLocation, DragStart, DropResult } from "react-beautiful-dnd"
 import { Task, Id, Entities } from "../../types"
@@ -34,6 +34,7 @@ export const TheTasks = () => {
   const { entities, selectedTaskIds } = state
   
   const onDragStart = (start: DragStart) => {
+    console.debug("onDragStart", start)
     const id: string = start.draggableId
     const selected: Id | null = state.selectedTaskIds.find(
       (taskId: Id): boolean => taskId === id,
@@ -100,6 +101,7 @@ export const TheTasks = () => {
   }
   
   const toggleSelection = (taskId: Id) => {
+    console.debug("toggleSelection", taskId)
     const selectedTaskIds: Id[] = state.selectedTaskIds
     const wasSelected: boolean = selectedTaskIds.includes(taskId)
     
@@ -178,12 +180,23 @@ export const TheTasks = () => {
     }))
   }
   
+  useEffect(() => {
+  
+    window.addEventListener("click", onWindowClick)
+    window.addEventListener("keydown", onWindowKeyDown)
+    window.addEventListener("touchend", onWindowTouchEnd)
+    
+    return () => {
+      window.removeEventListener("click", onWindowClick)
+      window.removeEventListener("keydown", onWindowKeyDown)
+      window.removeEventListener("touchend", onWindowTouchEnd)
+    }
+  }, [])
+  
   return (
     <DragDropContext
-      onDragStart={() => {
-      }}
-      onDragEnd={() => {
-      }}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
     >
       <Container>
         {entities.columnOrder.map((columnId: Id) => (
@@ -193,12 +206,9 @@ export const TheTasks = () => {
             selectedTaskIds={selectedTaskIds}
             key={columnId}
             draggingTaskId={state.draggingTaskId}
-            toggleSelection={() => {
-            }}
-            toggleSelectionInGroup={() => {
-            }}
-            multiSelectTo={() => {
-            }}
+            toggleSelection={toggleSelection}
+            toggleSelectionInGroup={toggleSelectionInGroup}
+            multiSelectTo={multiSelectTo}
           />
         ))}
       </Container>

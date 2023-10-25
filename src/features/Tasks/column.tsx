@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, forwardRef } from "react"
 import styled from "@emotion/styled"
 import memoizeOne from "memoize-one"
 import { colors } from "@atlaskit/theme"

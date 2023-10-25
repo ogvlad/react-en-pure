@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, forwardRef } from "react"
 import styled from "@emotion/styled"
 import { colors } from "@atlaskit/theme"
 import { grid, borderRadius } from "./constants"
@@ -50,7 +50,7 @@ const getColor = ({ isSelected, isGhosting }: any): string => {
   return colors.N900
 }
 
-const Container = (props: any) => {
+const Container = forwardRef((props: any, ref) => {
   
   const Container_ = styled.div`
     background-color: ${getBackgroundColor(props)};
@@ -75,8 +75,8 @@ const Container = (props: any) => {
       border-color: ${colors.G200};
     }
   `
-  return <Container_ {...props} />
-}
+  return <Container_ {...props} ref={ref} />
+})
 /* stylelint-disable block-no-empty */
 const Content = styled.div``
 /* stylelint-enable */
@@ -188,6 +188,7 @@ export default class Task extends Component<Props> {
   }
   
   render() {
+    console.debug("Task", this.props)
     const task: TaskType = this.props.task
     const index: number = this.props.index
     const isSelected: boolean = this.props.isSelected
