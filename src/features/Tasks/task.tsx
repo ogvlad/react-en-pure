@@ -188,7 +188,7 @@ export default class Task extends Component<Props> {
   }
   
   render() {
-    console.debug("Task", this.props)
+    // console.debug("Task", this.props)
     const task: TaskType = this.props.task
     const index: number = this.props.index
     const isSelected: boolean = this.props.isSelected
