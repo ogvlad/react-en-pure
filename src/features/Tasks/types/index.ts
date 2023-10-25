@@ -1,3 +1,7 @@
+export * from "./Author"
+export * from "./AuthorColors"
 export * from "./Entities"
 export * from "./Id"
+export * from "./Quote"
+export * from "./QuoteMap"
 export * from "./Task"
