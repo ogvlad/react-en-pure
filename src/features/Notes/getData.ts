@@ -7,7 +7,7 @@ export const getData = (): BoxState[] => [
   { id: "a-0", lastName: 'The Lannisters', firstName: '', age: null, type: ItemTypes.Section },
   { id: "a-1", lastName: 'Lannister', firstName: 'Cersei', age: 42, type: ItemTypes.SectionItem },
   { id: "a-2", lastName: 'Lannister', firstName: 'Jaime', age: 45, type: ItemTypes.SectionItem },
-  { id: "a-2", lastName: 'Lannister', firstName: 'Tyrion', age: 45, type: ItemTypes.SectionItem },
+  { id: "a-3", lastName: 'Lannister', firstName: 'Tyrion', age: 45, type: ItemTypes.SectionItem },
   
   { id: "b-0", lastName: 'The Starks', firstName: '', age: null, type: ItemTypes.Section },
   { id: "b-1", lastName: 'Stark', firstName: 'Arya', age: 16, type: ItemTypes.SectionItem },

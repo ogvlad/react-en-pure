@@ -22,6 +22,12 @@ export const getColumns = (): GridColDef[] => [
     editable: true,
   },
   {
+    field: 'type',
+    headerName: 'Type',
+    type: 'string',
+    width: 110,
+  },
+  {
     field: 'fullName',
     headerName: 'Full name',
     description: 'This column has a value getter and is not sortable.',

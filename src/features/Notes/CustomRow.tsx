@@ -5,7 +5,7 @@ import { useDrag } from 'react-dnd'
 export const CustomRow = (props: any) => {
   
   const { row } = props
-  console.debug("CustomRow", row)
+  // console.debug("CustomRow", row)
   
   const [{ opacity }, drag] = useDrag(
     () => ({
