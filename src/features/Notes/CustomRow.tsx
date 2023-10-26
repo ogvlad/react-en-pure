@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { GridRow } from "@mui/x-data-grid"
-import { useDrag } from 'react-dnd'
+import { useDrag, useDrop } from "react-dnd"
+import { Accepts } from "./types/Rules"
 
 export const CustomRow = (props: any) => {
   
   const { row } = props
   // console.debug("CustomRow", row)
   
-  const [{ opacity }, drag] = useDrag(
+  const [{ opacity }, dragRef] = useDrag(
     () => ({
       type: row.type,
       item: row,
@@ -17,8 +18,28 @@ export const CustomRow = (props: any) => {
     }),
     [],
   )
+  const onDrop = (item: any) => {
+    console.debug(item)
+  }
+  
+  const rules = Accepts[row.type]
+  
+  const [{ isOver, canDrop }, dropRef] = useDrop({
+    accept: rules,
+    drop: onDrop,
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+    }),
+  })
+  
+  // Use the same ref for both drag and drop
+  const combinedRef = (node: any) => {
+    dragRef(node);
+    dropRef(node);
+  };
   
   return (
-    <GridRow {...props} ref={drag} style={{ opacity }} />
+    <GridRow {...props} ref={combinedRef} style={{ opacity }} />
   )
 }

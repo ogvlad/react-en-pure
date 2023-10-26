@@ -42,14 +42,14 @@ export const DataTable = () => {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 5,
+              pageSize: 50,
             },
           },
         }}
         slots={{
           row: CustomRow,
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[5, 10, 50, 100]}
         checkboxSelection
         disableRowSelectionOnClick
       />
