@@ -21,8 +21,8 @@ export const DataTable = () => {
   
   const [rows] = useState<BoxState[]>(getData())
   
-  const onDrop = (item: any) => {
-    console.debug(item)
+  const onDrop = (item: any, monitor: any) => {
+    console.debug("onDrop", item, monitor)
   }
   
   const [{ isOver, canDrop }, drop] = useDrop({
@@ -35,7 +35,7 @@ export const DataTable = () => {
   })
   
   return (
-    <Box ref={drop} sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ height: 800, width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={getColumns()}
