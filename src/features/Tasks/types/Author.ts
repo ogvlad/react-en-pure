@@ -1,4 +1,4 @@
-import { AuthorColors, Id } from "./types"
+import { AuthorColors, Id } from "./index"
 
 export interface Author {
   id: Id,
