@@ -17,13 +17,28 @@ export const CustomRow = (props: any) => {
     <Draggable draggableId={row.id} index={props.index}>
       {(provided: DraggableProvided, snapshot: DraggableStateSnapshot) => {
         return (
+        <>
           <GridRow
             {...props}
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             style={{ ...provided.draggableProps.style, position: 'static' }}
-          />)
+          />
+          {/*{state.itemsList.map((item, index) => {*/}
+          {/*  // console.debug(item)*/}
+          {/*  if (item.pid !== row.id) return null*/}
+          
+          {/*  const childProps = {*/}
+          {/*    ...props,*/}
+          {/*    index,*/}
+          {/*    key: item.id,*/}
+          {/*    rowId: item.id,*/}
+          {/*  }*/}
+          {/*  return (<GridRow {...childProps} style={{ opacity }} />)*/}
+          {/*})}*/}
+        </>
+        )
       }}
     </Draggable>
   )
