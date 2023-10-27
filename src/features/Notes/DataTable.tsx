@@ -11,10 +11,13 @@ import { useState } from "react"
 import { DustbinState } from "./types/DustbinState"
 import { BoxState } from "./types/BoxState"
 import { useItemsContext } from "./context"
+import { usePrepareRows } from "./logic/usePrepareRows"
 
 export const DataTable = () => {
   
   const { state, api } = useItemsContext()
+  
+  // usePrepareRows()
   
   const onDrop = (item: any, monitor: any) => {
     console.debug("onDrop", item, monitor)
@@ -32,7 +35,7 @@ export const DataTable = () => {
   return (
     <Box sx={{ height: 800, width: "100%" }}>
       <DataGrid
-        rows={state.items}
+        rows={state.itemsList}
         columns={getColumns()}
         initialState={{
           pagination: {
