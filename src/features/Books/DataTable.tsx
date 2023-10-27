@@ -27,6 +27,7 @@ export const DataTable = () => {
     const destination: DraggableLocation = result.destination
     const source: DraggableLocation = result.source
     console.debug("onDragEnd", result)
+    api.swap(source.index, destination.index)
   }
   
   return (
