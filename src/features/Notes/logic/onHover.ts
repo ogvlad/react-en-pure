@@ -1,6 +1,7 @@
 import { XYCoord } from "dnd-core"
+import { IApi } from "../types/IApi"
 
-export function createOnHover (props: any, ref: any) {
+export function createOnHover (props: any, ref: any, api: IApi) {
   return (item: any, monitor: any) => {
     // console.debug("hover", item, monitor)
     if (!ref.current) {
@@ -42,6 +43,7 @@ export function createOnHover (props: any, ref: any) {
       return
     }
     
+    api.swap(dragIndex, hoverIndex)
     // Time to actually perform the action
     // moveCard(dragIndex, hoverIndex)
     

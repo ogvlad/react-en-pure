@@ -4,8 +4,11 @@ import { useDrag, useDrop } from "react-dnd"
 import { Accepts } from "./types/Rules"
 import { createOnHover } from "./logic/onHover"
 import { createOnDrop } from "./logic/onDrop"
+import { useItemsContext } from "./context"
 
 export const CustomRow = (props: any) => {
+  
+  const { state, api } = useItemsContext()
   
   const { row, index } = props
   // console.debug("CustomRow", row)
@@ -34,7 +37,7 @@ export const CustomRow = (props: any) => {
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
-    hover: createOnHover(props, ref),
+    hover: createOnHover(props, ref, api),
   })
   
   dragRef(dropRef(ref))
