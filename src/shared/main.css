@@ -49,3 +49,10 @@ body, html {
 .section-item {
     background-color: lightgray;
 }
+
+#baseline {
+    background-color: black;
+    height: 1px; /* This will create a horizontal line */
+    width: 1100px; /* Length of the line */
+    position: absolute;
+}

@@ -3,7 +3,6 @@ import { GridRow } from "@mui/x-data-grid"
 import { useItemsContext } from "./context"
 import { useMyDrag } from "./logic/useMyDrag"
 import { useMyDrop } from "./logic/useMyDrop"
-import { RowChild } from "./RowChild"
 
 export const RowParent = (props: any) => {
   
@@ -24,10 +23,14 @@ export const RowParent = (props: any) => {
   
   if (row.pid !== "") return null
   
-  const opacity = drag.isDragging || state.dragging.id === row.pid ? 0.5 : 1
+  const opacity = drag.isDragging || state.dragging.id === row.pid ? 1 : 1
+  const transform = state.itemsTransformMap[row.id]
   
   return (
-    <div ref={ref} style={{ opacity }}>
+    <div ref={ref} style={{
+      opacity,
+      transform: `translate3d(0, ${transform || 0}px, 0)`,
+    }}>
       <GridRow {...props}  />
       {state.itemsList.map((item, index) => {
         // console.debug(item)

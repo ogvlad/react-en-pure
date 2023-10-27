@@ -10,7 +10,8 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
 
   const [state, setState] = useState<IState>({
     itemsList: items,
-    itemsMap: {},
+    itemsRefMap: {},
+    itemsTransformMap: {},
     dragging: {
       id: null,
     }
@@ -23,11 +24,18 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
         const newItems = swap_(state.itemsList, indexA, indexB)
         setState((prev) => ({ ...prev, itemsList: newItems }))
       },
+      swapCss: (params: any) => {
+        // const newItems = swap_(state.itemsList, indexA, indexB)
+        // setState((prev) => ({ ...prev, itemsList: newItems }))
+      },
       setDragging: (id: string | null) => {
         setState((prev) => ({ ...prev, dragging: { id } }))
       },
       setRef: (id: string, ref: any) => {
-        setState((prev) => ({ ...prev, itemsMap: { ...prev.itemsMap, [id]: ref} }))
+        setState((prev) => ({ ...prev, itemsRefMap: { ...prev.itemsRefMap, [id]: ref} }))
+      },
+      setTransform: (id: string, value: any) => {
+        setState((prev) => ({ ...prev, itemsTransformMap: { ...prev.itemsTransformMap, [id]: value} }))
       }
     }
   }

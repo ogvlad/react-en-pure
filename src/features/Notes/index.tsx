@@ -13,6 +13,7 @@ export const TheNotes = () => {
       <DndProvider backend={HTML5Backend}>
         <ItemsProvider items={getData()}>
           <DataTable />
+          <div id="baseline"></div>
         </ItemsProvider>
       </DndProvider>
     </Root>
