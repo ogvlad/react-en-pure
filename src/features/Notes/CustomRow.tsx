@@ -15,15 +15,19 @@ export const CustomRow = (props: any) => {
   
   const ref = useRef<HTMLDivElement>(null)
   
-  const [{ opacity }, dragRef] = useDrag(
+  const [{ isDragging }, dragRef] = useDrag(
     () => ({
       type: row.type,
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
       item: () => {
+        api.setDragging(row.id);
         return { ...row, index: props.index }
       },
-      collect: (monitor) => ({
-        opacity: monitor.isDragging() ? 1 : 1,
-      }),
+      end: () => {
+        api.setDragging(null);
+      },
     }),
     [],
   )
@@ -41,6 +45,8 @@ export const CustomRow = (props: any) => {
   })
   
   dragRef(dropRef(ref))
+  
+  const opacity = isDragging || state.dragging.id === row.pid ? 0.5 : 1
   
   return (
     <GridRow {...props} ref={ref} style={{ opacity }} />

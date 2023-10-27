@@ -10,6 +10,9 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
 
   const [state, setState] = useState<IState>({
     items,
+    dragging: {
+      id: null,
+    }
   })
   
   const context: IContext = {
@@ -17,7 +20,10 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
     api: {
       swap: (indexA: number, indexB: number) => {
         const newItems = swap_(state.items, indexA, indexB)
-        setState({ items: newItems })
+        setState((prev) => ({ ...prev, items: newItems }))
+      },
+      setDragging: (id: string | null) => {
+        setState((prev) => ({ ...prev, dragging: { id } }))
       }
     }
   }
