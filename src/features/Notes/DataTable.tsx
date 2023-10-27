@@ -19,7 +19,20 @@ export const DataTable = () => {
     { name: "Sowiso", accepts: [ItemTypes.SowisoItem], lastDroppedItem: null },
   ])
   
-  const [rows] = useState<BoxState[]>(getData())
+  const [rows, setRows] = useState<BoxState[]>(getData())
+  
+  function swap<T>(arr: T[], indexA: number, indexB: number): T[] {
+    const newArr = [...arr]
+    const temp = newArr[indexA]
+    newArr[indexA] = newArr[indexB]
+    newArr[indexB] = temp
+    return newArr
+  }
+  
+  const handleSwap = (indexA: number, indexB: number) => {
+    const newItems = swap(rows, indexA, indexB)
+    setRows(newItems)
+  }
   
   const onDrop = (item: any, monitor: any) => {
     console.debug("onDrop", item, monitor)
