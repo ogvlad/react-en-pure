@@ -27,8 +27,8 @@ export const RowParent = (props: any) => {
   const opacity = drag.isDragging || state.dragging.id === row.pid ? 0.5 : 1
   
   return (
-    <>
-      <GridRow {...props} ref={ref} style={{ opacity }} />
+    <div ref={ref} style={{ opacity }}>
+      <GridRow {...props}  />
       {state.itemsList.map((item, index) => {
         // console.debug(item)
         if (item.pid !== row.id) return null
@@ -41,6 +41,6 @@ export const RowParent = (props: any) => {
         }
         return (<GridRow {...childProps} style={{ opacity }} />)
       })}
-    </>
+    </div>
   )
 }
