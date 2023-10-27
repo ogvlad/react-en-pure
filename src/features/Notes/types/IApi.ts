@@ -5,4 +5,5 @@ export interface IApi {
   setDragging: (id: string | null) => void
   setRef: (id: string, ref: any) => void
   setTransform: (id: string, value: any) => void
+  resetTransform: () => void
 }

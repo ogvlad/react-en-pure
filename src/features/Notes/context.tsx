@@ -36,6 +36,10 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
       },
       setTransform: (id: string, value: any) => {
         setState((prev) => ({ ...prev, itemsTransformMap: { ...prev.itemsTransformMap, [id]: value} }))
+      },
+      resetTransform: () => {
+        const newMap = reset_(state.itemsTransformMap)
+        setState((prev) => ({ ...prev, itemsTransformMap: { ...prev.itemsTransformMap, ...newMap} }))
       }
     }
   }
@@ -51,4 +55,12 @@ function swap_<T>(arr: T[], indexA: number, indexB: number): T[] {
   newArr[indexA] = newArr[indexB]
   newArr[indexB] = temp
   return newArr
+}
+function reset_(obj: any) {
+  for (let key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      obj[key] = 0;
+    }
+  }
+  return obj;
 }

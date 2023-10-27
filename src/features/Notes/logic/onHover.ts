@@ -36,6 +36,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     
     // Determine container position and take it's bottom line as a pointer
     const draggingRef = state.itemsRefMap[draggingItem.id]
+    const height = draggingRef.current?.getBoundingClientRect().height
     // console.debug(draggingRef)
     // const draggingBoundingRect = draggingRef.current?.getBoundingClientRect()
     // const draggingOffset_ = draggingBoundingRect.bottom
@@ -61,6 +62,9 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     if (dragIndex > hoverIndex && hoverClientY > hoverBaselineY) {
       return
     }
+  
+    // const hoverTransformSign = dragIndex < hoverIndex ? -1 : 1
+    // api.setTransform(props.row.id, hoverTransformSign * height)
     
     api.swap(dragIndex, hoverIndex)
     // Time to actually perform the action

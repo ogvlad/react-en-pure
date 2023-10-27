@@ -1,12 +1,11 @@
-export function createOnDrop(props: any, ref: any) {
+import { IState } from "../types/IState"
+import { IApi } from "../types/IApi"
+
+export function createOnDrop(props: any, state: IState, api: IApi) {
   return (item: any, monitor: any) => {
     console.debug("onDrop", item, props)
-    hideBaseline()
+  
+
   }
 }
 
-const hideBaseline = () => {
-  // Example: Change the line's position using JavaScript
-  const line = document.getElementById('baseline');
-  line.style.display = "none"
-}

@@ -16,7 +16,13 @@ export const useMyDrag = (props: any, ref: any) => {
         api.setDragging(row.id)
         return { ...row, index: props.index }
       },
-      end: () => {
+      end: (draggedItem, monitor) => {
+        const dragIndex = draggedItem.index
+        const hoverIndex = props.index
+  
+        hideBaseline()
+        // api.swap(dragIndex, hoverIndex)
+        // api.resetTransform()
         api.setDragging(null)
       },
     }),
@@ -24,4 +30,10 @@ export const useMyDrag = (props: any, ref: any) => {
   )
   
   return { useRef: dragRef, isDragging }
+}
+
+const hideBaseline = () => {
+  // Example: Change the line's position using JavaScript
+  const line = document.getElementById('baseline');
+  line.style.display = "none"
 }

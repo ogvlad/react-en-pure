@@ -13,7 +13,7 @@ export const useMyDrop = (props: any, ref: any) => {
   
   const [{ isOver, canDrop }, dropRef] = useDrop({
     accept: rules,
-    drop: createOnDrop(props, ref),
+    drop: createOnDrop(props, state, api),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
