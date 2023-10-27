@@ -3,8 +3,9 @@ import { GridRow } from "@mui/x-data-grid"
 import { useItemsContext } from "./context"
 import { useMyDrag } from "./logic/useMyDrag"
 import { useMyDrop } from "./logic/useMyDrop"
+import { RowChild } from "./RowChild"
 
-export const CustomRow = (props: any) => {
+export const RowParent = (props: any) => {
   
   const { state, api } = useItemsContext()
   
@@ -21,9 +22,25 @@ export const CustomRow = (props: any) => {
     api.setRef(row.id, ref)
   }, [])
   
+  if (row.pid !== "") return null
+  
   const opacity = drag.isDragging || state.dragging.id === row.pid ? 0.5 : 1
   
   return (
-    <GridRow {...props} ref={ref} style={{ opacity }} />
+    <>
+      <GridRow {...props} ref={ref} style={{ opacity }} />
+      {state.itemsList.map((item, index) => {
+        // console.debug(item)
+        if (item.pid !== row.id) return null
+        
+        const childProps = {
+          ...props,
+          index,
+          key: item.id,
+          rowId: item.id,
+        }
+        return (<GridRow {...childProps} style={{ opacity }} />)
+      })}
+    </>
   )
 }
