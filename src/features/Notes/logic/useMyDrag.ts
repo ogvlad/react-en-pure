@@ -13,11 +13,11 @@ export const useMyDrag = (props: any, ref: any) => {
         isDragging: monitor.isDragging(),
       }),
       item: () => {
-        api.setDragging(row.id);
+        api.setDragging(row.id)
         return { ...row, index: props.index }
       },
       end: () => {
-        api.setDragging(null);
+        api.setDragging(null)
       },
     }),
     [],

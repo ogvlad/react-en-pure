@@ -1,7 +1,11 @@
 import { XYCoord } from "dnd-core"
 import { IApi } from "../types/IApi"
+import { IState } from "../types/IState"
 
-export function createOnHover (props: any, ref: any, api: IApi) {
+export function createOnHover (props: any, state: IState, api: IApi) {
+  
+  const ref = state.itemsMap[props.row.id]
+  
   return (item: any, monitor: any) => {
     // console.debug("hover", item, monitor)
     if (!ref.current) {

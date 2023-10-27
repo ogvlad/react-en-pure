@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { GridRow } from "@mui/x-data-grid"
 import { useItemsContext } from "./context"
 import { useMyDrag } from "./logic/useMyDrag"
@@ -12,11 +12,14 @@ export const CustomRow = (props: any) => {
   // console.debug("CustomRow", row)
   
   const ref = useRef<HTMLDivElement>(null)
-  
   const drag = useMyDrag(props, ref)
   const drop = useMyDrop(props, ref)
   
   drag.useRef(drop.useRef(ref))
+  
+  useEffect(() => {
+    api.setRef(row.id, ref)
+  }, [])
   
   const opacity = drag.isDragging || state.dragging.id === row.pid ? 0.5 : 1
   

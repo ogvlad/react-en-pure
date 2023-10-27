@@ -4,20 +4,13 @@ import { DataGrid } from "@mui/x-data-grid"
 import { useDrop } from "react-dnd"
 
 import { CustomRow } from "./CustomRow"
-import { getData } from "./getData"
 import { getColumns } from "./getColumns"
 import { ItemTypes } from "./types/ItemTypes"
-import { useState } from "react"
-import { DustbinState } from "./types/DustbinState"
-import { BoxState } from "./types/BoxState"
 import { useItemsContext } from "./context"
-import { usePrepareRows } from "./logic/usePrepareRows"
 
 export const DataTable = () => {
   
   const { state, api } = useItemsContext()
-  
-  // usePrepareRows()
   
   const onDrop = (item: any, monitor: any) => {
     console.debug("onDrop", item, monitor)
