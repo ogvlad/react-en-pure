@@ -10,29 +10,11 @@ import { ItemTypes } from "./types/ItemTypes"
 import { useState } from "react"
 import { DustbinState } from "./types/DustbinState"
 import { BoxState } from "./types/BoxState"
+import { useItemsContext } from "./context"
 
 export const DataTable = () => {
   
-  const [targets, setTargets] = useState<DustbinState[]>([
-    { name: "Table", accepts: [ItemTypes.Item, ItemTypes.Section, ItemTypes.SowisoSet], lastDroppedItem: null },
-    { name: "Section", accepts: [ItemTypes.SectionItem], lastDroppedItem: null },
-    { name: "Sowiso", accepts: [ItemTypes.SowisoItem], lastDroppedItem: null },
-  ])
-  
-  const [rows, setRows] = useState<BoxState[]>(getData())
-  
-  function swap<T>(arr: T[], indexA: number, indexB: number): T[] {
-    const newArr = [...arr]
-    const temp = newArr[indexA]
-    newArr[indexA] = newArr[indexB]
-    newArr[indexB] = temp
-    return newArr
-  }
-  
-  const handleSwap = (indexA: number, indexB: number) => {
-    const newItems = swap(rows, indexA, indexB)
-    setRows(newItems)
-  }
+  const { state, api } = useItemsContext()
   
   const onDrop = (item: any, monitor: any) => {
     console.debug("onDrop", item, monitor)
@@ -50,7 +32,7 @@ export const DataTable = () => {
   return (
     <Box sx={{ height: 800, width: "100%" }}>
       <DataGrid
-        rows={rows}
+        rows={state.items}
         columns={getColumns()}
         initialState={{
           pagination: {
