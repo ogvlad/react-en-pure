@@ -12,9 +12,10 @@ import {
 } from "react-beautiful-dnd"
 import { CustomRow } from "./CustomRow"
 import { Root } from "../../shared/Root"
-import { getColumns } from "./getColumns"
-import { getData } from "./getData"
 import { useState } from "react"
+import { getColumns } from "../Notes/getColumns"
+import { getData } from "../Notes/getData"
+import { getRowClassName } from "../Notes/logic/getRowClassName"
 
 export const TheBooks = () => {
   
@@ -38,23 +39,24 @@ export const TheBooks = () => {
       >
         <Droppable droppableId={"DataGridArea"}>
           {(provided: DroppableProvided, snapshot: DroppableStateSnapshot) => (
-            <Box sx={{ height: 400, width: "100%" }} ref={provided.innerRef} {...provided.droppableProps} >
+            <Box sx={{ height: 800, width: "100%" }} ref={provided.innerRef} {...provided.droppableProps} >
               <DataGrid
                 rows={getData()}
                 columns={getColumns()}
                 initialState={{
                   pagination: {
                     paginationModel: {
-                      pageSize: 5,
+                      pageSize: 50,
                     },
                   },
                 }}
                 slots={{
                   row: CustomRow,
                 }}
-                pageSizeOptions={[5]}
+                pageSizeOptions={[5, 50]}
                 checkboxSelection
                 disableRowSelectionOnClick
+                getRowClassName={getRowClassName}
               />
               {provided.placeholder}
             </Box>

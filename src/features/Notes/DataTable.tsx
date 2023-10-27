@@ -7,6 +7,7 @@ import { getColumns } from "./getColumns"
 import { ItemTypes } from "./types/ItemTypes"
 import { useItemsContext } from "./context"
 import { RowParent } from "./RowParent"
+import { getRowClassName } from "./logic/getRowClassName"
 
 export const DataTable = () => {
   
@@ -25,17 +26,7 @@ export const DataTable = () => {
     }),
   })
   
-  const getRowClassName = (args: any): string => {
-    const { row } = args
-    if (!row) return ""
-    // if (row.pid === "") return "Assessments-ItemRow"
-    if (row.pid === "") return "section-title"
-    if (row.pid !== "") return "section-item"
-    // if (row.treeDataPath && row.treeDataPath.length > 1) return "Assessments-ItemRow Assessments-SectionItem Assessments-Form Assessments-Form-NonDraggable"
-    
-    return ""
-  }
-  
+
   return (
     <Box sx={{ height: 800, width: "100%" }}>
       <DataGrid
