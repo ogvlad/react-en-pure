@@ -1,6 +1,6 @@
 import { useDrag } from "react-dnd"
 import { useItemsContext } from "../context"
-import { BaseLine } from "./baseline"
+import { Baseline } from "./baseline"
 
 export const useMyDrag = (props: any, ref: any) => {
   
@@ -20,7 +20,7 @@ export const useMyDrag = (props: any, ref: any) => {
       end: (draggedItem, monitor) => {
         console.debug("onEnd", draggedItem, monitor)
         api.setDragging(null)
-        BaseLine.hide()
+        Baseline.hide()
       },
     }),
     [],

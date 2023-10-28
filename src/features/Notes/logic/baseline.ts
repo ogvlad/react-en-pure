@@ -12,4 +12,4 @@ const hide = () => {
   line.style.display = "none"
 }
 
-export const BaseLine = { show, hide }
+export const Baseline = { show, hide }

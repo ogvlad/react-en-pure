@@ -1,43 +1,45 @@
 import { XYCoord } from "dnd-core"
 import { IApi } from "../types/IApi"
 import { IState } from "../types/IState"
-import { BaseLine } from "./baseline"
+import { Baseline } from "./baseline"
 
 export function createOnHover(props: any, state: IState, api: IApi) {
   
-  const ref = state.itemsRefMap[props.row.id]
+  const hoverItem = state.itemsMap[props.row.id]
+  const hoverRef = state.itemsRefMap[props.row.id]
   
-  return (item: any, monitor: any) => {
+  return (dragItem: any, monitor: any) => {
     
-    // console.debug("hover", item, monitor)
-    if (!ref.current) {
+    console.debug("hover")
+    console.debug(dragItem, hoverItem)
+  
+    if (!hoverRef.current) {
       return
     }
-    console.debug("hover", item.index, props.index)
-    const dragIndex = item.index
-    const hoverIndex = props.index
     
+    const dragIndex = dragItem.index
+    const hoverIndex = props.index
+    console.debug(dragIndex, hoverIndex)
+
     // Don't replace items with themselves
     if (dragIndex === hoverIndex) {
       return
     }
+  
+    const draggingRef = state.itemsRefMap[dragItem.id]
+
+    // Determine rectangles
+    const dragRect = draggingRef.current?.getBoundingClientRect()
+    const hoverRect = hoverRef.current?.getBoundingClientRect()
     
-    // Determine rectangle on screen
-    const hoverBoundingRect = ref.current?.getBoundingClientRect()
+    // Get vertical middle of hovered item
+    const hoverBaselineY = (hoverRect.bottom - hoverRect.top) / 2
+    // console.debug(`hoverBoundingRect.top: ${hoverRect.top}`)
+    // console.debug(`hoverBoundingRect.bottom: ${hoverRect.bottom}`)
+    // console.debug(`hoverBaselineY: ${hoverBaselineY}`)
+    Baseline.show(hoverRect.top + hoverBaselineY)
     
-    // Get vertical middle
-    const hoverBaselineY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
-    console.debug(`hoverBoundingRect.top: ${hoverBoundingRect.top}`)
-    console.debug(`hoverBoundingRect.bottom: ${hoverBoundingRect.bottom}`)
-    console.debug(`hoverBaselineY: ${hoverBaselineY}`)
-    BaseLine.show(hoverBoundingRect.top + hoverBaselineY)
-    
-    const draggingItem = monitor.getItem()
-    // console.debug(draggingItem)
-    
-    // Determine container position and take it's bottom line as a pointer
-    const draggingRef = state.itemsRefMap[draggingItem.id]
-    const height = draggingRef.current?.getBoundingClientRect().height
+    const height = dragRect.height
     // console.debug(draggingRef)
     // const draggingBoundingRect = draggingRef.current?.getBoundingClientRect()
     // const draggingOffset_ = draggingBoundingRect.bottom
@@ -48,11 +50,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     console.debug(`draggingOffset: ${draggingOffset.y}`)
     
     // Get pixels to the top
-    const hoverClientY = (draggingOffset as XYCoord).y - hoverBoundingRect.top
-    
-    // Only perform the move when the mouse has crossed half of the items height
-    // When dragging downwards, only move when the cursor is below 50%
-    // When dragging upwards, only move when the cursor is above 50%
+    const hoverClientY = (draggingOffset as XYCoord).y - hoverRect.top
     
     // Dragging downwards
     if (dragIndex < hoverIndex && hoverClientY < hoverBaselineY) {
@@ -65,7 +63,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     }
   
     const hoverTransformSign = dragIndex < hoverIndex ? -1 : 1
-    api.setTransform(props.row.id, hoverTransformSign * height)
+    api.setTransform(hoverItem.id, hoverTransformSign * height)
     
     // api.swap(dragIndex, hoverIndex)
     // Time to actually perform the action
@@ -75,7 +73,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     // Generally it's better to avoid mutations,
     // but it's good here for the sake of performance
     // to avoid expensive index searches.
-    item.index = hoverIndex
+    dragItem.index = hoverIndex
   }
 }
 

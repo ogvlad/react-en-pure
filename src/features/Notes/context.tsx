@@ -1,6 +1,7 @@
 import React, { createContext, PropsWithChildren, useContext, useState } from "react"
 import { IContext } from "./types/IContext"
 import { IState } from "./types/IState"
+import { BoxState } from "./types/BoxState"
 
 const TheContext = createContext({} as IContext)
 
@@ -10,6 +11,7 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
 
   const [state, setState] = useState<IState>({
     itemsList: items,
+    itemsMap: {},
     itemsRefMap: {},
     itemsTransformMap: {},
     dragging: {
@@ -30,6 +32,9 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
       },
       setDragging: (id: string | null) => {
         setState((prev) => ({ ...prev, dragging: { id } }))
+      },
+      setItem: (id: string, item: BoxState) => {
+        setState((prev) => ({ ...prev, itemsMap: { ...prev.itemsMap, [id]: item} }))
       },
       setRef: (id: string, ref: any) => {
         setState((prev) => ({ ...prev, itemsRefMap: { ...prev.itemsRefMap, [id]: ref} }))

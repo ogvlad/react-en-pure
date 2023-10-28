@@ -18,6 +18,7 @@ export const RowParent = (props: any) => {
   drag.useRef(drop.useRef(ref))
   
   useEffect(() => {
+    api.setItem(row.id, row)
     api.setRef(row.id, ref)
   }, [])
   
