@@ -54,6 +54,8 @@ body, html {
 #baseline {
     background-color: black;
     height: 1px; /* This will create a horizontal line */
-    width: 1100px; /* Length of the line */
+    width: 100vw; /* Length of the line */
     position: absolute;
+    display: none;
+    left: 0;
 }

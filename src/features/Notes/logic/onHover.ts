@@ -1,6 +1,7 @@
 import { XYCoord } from "dnd-core"
 import { IApi } from "../types/IApi"
 import { IState } from "../types/IState"
+import { BaseLine } from "./baseline"
 
 export function createOnHover(props: any, state: IState, api: IApi) {
   
@@ -29,7 +30,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     console.debug(`hoverBoundingRect.top: ${hoverBoundingRect.top}`)
     console.debug(`hoverBoundingRect.bottom: ${hoverBoundingRect.bottom}`)
     console.debug(`hoverBaselineY: ${hoverBaselineY}`)
-    showBaseline(hoverBoundingRect.top + hoverBaselineY)
+    BaseLine.show(hoverBoundingRect.top + hoverBaselineY)
     
     const draggingItem = monitor.getItem()
     // console.debug(draggingItem)
@@ -78,35 +79,5 @@ export function createOnHover(props: any, state: IState, api: IApi) {
   }
 }
 
-const showBaseline = (top: any) => {
-  // Example: Change the line's position using JavaScript
-  const line = document.getElementById("baseline")
-  line.style.display = "block"
-  line.style.position = "absolute"
-  line.style.top = `${top}px` // Y-coordinate
-  line.style.left = "0" // X-coordinate
-}
 
-function debounce(func: any, wait: any) {
-  let timeout: any
-  return function (...args: any[]) {
-    const context = this
-    clearTimeout(timeout)  // Очищаем предыдущий таймер
-    timeout = setTimeout(() => {
-      func.apply(context, args)  // Вызываем функцию после задержки
-    }, wait)
-  }
-}
 
-function throttle(func: any, limit: any) {
-  let inThrottle: any
-  return function () {
-    const args = arguments
-    const context = this
-    if (!inThrottle) {
-      func.apply(context, args)
-      inThrottle = true
-      setTimeout(() => inThrottle = false, limit)
-    }
-  }
-}

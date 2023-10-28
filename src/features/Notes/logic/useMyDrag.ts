@@ -1,5 +1,6 @@
 import { useDrag } from "react-dnd"
 import { useItemsContext } from "../context"
+import { BaseLine } from "./baseline"
 
 export const useMyDrag = (props: any, ref: any) => {
   
@@ -19,6 +20,7 @@ export const useMyDrag = (props: any, ref: any) => {
       end: (draggedItem, monitor) => {
         console.debug("onEnd", draggedItem, monitor)
         api.setDragging(null)
+        BaseLine.hide()
       },
     }),
     [],
@@ -27,8 +29,3 @@ export const useMyDrag = (props: any, ref: any) => {
   return { useRef: dragRef, isDragging }
 }
 
-const hideBaseline = () => {
-  // Example: Change the line's position using JavaScript
-  const line = document.getElementById('baseline');
-  line.style.display = "none"
-}
