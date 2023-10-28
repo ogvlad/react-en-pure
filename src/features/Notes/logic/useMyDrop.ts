@@ -18,6 +18,10 @@ export const useMyDrop = (props: any, ref: any) => {
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
+    canDrop: (item, monitor) => {
+      console.debug("canDrop", item, monitor)
+      return true
+    },
     hover: createOnHover(props, state, api),
   })
   

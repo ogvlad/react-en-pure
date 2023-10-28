@@ -30,12 +30,17 @@ export const RowParent = (props: any) => {
   
   // const transformValue = state.dragging.id ? transform : 0
   
+  const getBorderColor = () => {
+    if (!drop.isOver) return "transparent"
+    if (drop.canDrop) return "green"
+    return "red"
+  }
   return (
     <div ref={ref} style={{
       opacity,
       transform: `translate3d(0, ${transform || 0}px, 0)`,
       transition: 'transform 0.5s ease',
-      border: `1px solid ${drop.isOver ? 'red' : 'transparent'}`
+      border: `1px solid ${getBorderColor()}`
     }}>
       <GridRow {...props}  />
       {/*{state.itemsList.map((item, index) => {*/}
