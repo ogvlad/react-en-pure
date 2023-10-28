@@ -8,5 +8,6 @@ export interface IState {
   dragging: {
     id: string | null
   }
+  currentHoverIndex: number | null
 }
 

@@ -14,6 +14,7 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
     itemsMap: {},
     itemsRefMap: {},
     itemsTransformMap: {},
+    currentHoverIndex: null,
     dragging: {
       id: null,
     }
@@ -33,18 +34,22 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
       setDragging: (id: string | null) => {
         setState((prev) => ({ ...prev, dragging: { id } }))
       },
+      setCurrentHoverIndex: (index) => {
+        setState((prev) => ({ ...prev, currentHoverIndex: index }))
+      },
       setItem: (id: string, item: BoxState) => {
         setState((prev) => ({ ...prev, itemsMap: { ...prev.itemsMap, [id]: item} }))
       },
       setRef: (id: string, ref: any) => {
         setState((prev) => ({ ...prev, itemsRefMap: { ...prev.itemsRefMap, [id]: ref} }))
       },
-      setTransform: (id: string, value: any) => {
-        setState((prev) => ({ ...prev, itemsTransformMap: { ...prev.itemsTransformMap, [id]: value} }))
+      setTransform: (id: string, offset: any) => {
+        const transformCurrent = state.itemsTransformMap[id] ?? 0
+        setState((prev) => ({ ...prev, itemsTransformMap: { ...prev.itemsTransformMap, [id]: transformCurrent + offset} }))
       },
       resetTransform: () => {
-        const newMap = reset_(state.itemsTransformMap)
-        setState((prev) => ({ ...prev, itemsTransformMap: { ...prev.itemsTransformMap, ...newMap} }))
+        // const newMap = reset_(state.itemsTransformMap)
+        setState((prev) => ({ ...prev, itemsTransformMap: { ...{}} }))
       }
     }
   }

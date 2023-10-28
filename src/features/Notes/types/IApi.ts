@@ -4,6 +4,7 @@ export interface IApi {
   swap: (index1: number, index2: number) => void
   swapCss: (params: any) => void
   setDragging: (id: string | null) => void
+  setCurrentHoverIndex: (index: number | null) => void
   setItem: (id: string, item: BoxState) => void
   setRef: (id: string, ref: any) => void
   setTransform: (id: string, value: any) => void

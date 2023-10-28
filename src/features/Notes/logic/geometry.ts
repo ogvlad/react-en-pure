@@ -27,6 +27,7 @@ export const Geometry = {
 }
 
 export enum Direction {
+  Undefined = "UNDEFINED",
   Up = "UP",
   Down = "DOWN",
 }
