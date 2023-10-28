@@ -35,6 +35,7 @@ export const RowParent = (props: any) => {
       opacity,
       transform: `translate3d(0, ${transform || 0}px, 0)`,
       transition: 'transform 0.5s ease',
+      border: `1px solid ${drop.isOver ? 'red' : 'transparent'}`
     }}>
       <GridRow {...props}  />
       {/*{state.itemsList.map((item, index) => {*/}
