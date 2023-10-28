@@ -8,7 +8,7 @@ const TheContext = createContext({} as IContext)
 export function ItemsProvider(props: any & PropsWithChildren<{}>) {
   
   const { children, items } = props
-
+  
   const [state, setState] = useState<IState>({
     itemsList: items,
     itemsMap: {},
@@ -23,8 +23,19 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
   const context: IContext = {
     state,
     api: {
+      getIndexById: (id: string) => {
+        return state.itemsList.findIndex(row => row.id === id)
+      },
       swap: (indexA: number, indexB: number) => {
         const newItems = swap_(state.itemsList, indexA, indexB)
+        setState((prev) => ({ ...prev, itemsList: newItems }))
+      },
+      swapByIds: (id1, id2) => {
+        const index1 = state.itemsList.findIndex(row => row.id === id1)
+        const index2 = state.itemsList.findIndex(row => row.id === id2)
+        console.debug("swapByIds", index1, index2)
+        
+        const newItems = swap_(state.itemsList, index1, index2)
         setState((prev) => ({ ...prev, itemsList: newItems }))
       },
       swapCss: (params: any) => {
@@ -38,18 +49,21 @@ export function ItemsProvider(props: any & PropsWithChildren<{}>) {
         setState((prev) => ({ ...prev, currentHoverIndex: index }))
       },
       setItem: (id: string, item: BoxState) => {
-        setState((prev) => ({ ...prev, itemsMap: { ...prev.itemsMap, [id]: item} }))
+        setState((prev) => ({ ...prev, itemsMap: { ...prev.itemsMap, [id]: item } }))
       },
       setRef: (id: string, ref: any) => {
-        setState((prev) => ({ ...prev, itemsRefMap: { ...prev.itemsRefMap, [id]: ref} }))
+        setState((prev) => ({ ...prev, itemsRefMap: { ...prev.itemsRefMap, [id]: ref } }))
       },
       setTransform: (id: string, offset: any) => {
         const transformCurrent = state.itemsTransformMap[id] ?? 0
-        setState((prev) => ({ ...prev, itemsTransformMap: { ...prev.itemsTransformMap, [id]: transformCurrent + offset} }))
+        setState((prev) => ({
+          ...prev,
+          itemsTransformMap: { ...prev.itemsTransformMap, [id]: transformCurrent + offset }
+        }))
       },
       resetTransform: () => {
         // const newMap = reset_(state.itemsTransformMap)
-        setState((prev) => ({ ...prev, itemsTransformMap: { ...{}} }))
+        setState((prev) => ({ ...prev, itemsTransformMap: { ...{} } }))
       }
     }
   }
@@ -66,11 +80,12 @@ function swap_<T>(arr: T[], indexA: number, indexB: number): T[] {
   newArr[indexB] = temp
   return newArr
 }
+
 function reset_(obj: any) {
   for (let key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      obj[key] = 0;
+      obj[key] = 0
     }
   }
-  return obj;
+  return obj
 }

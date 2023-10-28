@@ -3,6 +3,8 @@ import { Accepts } from "../types/Rules"
 import { createOnDrop } from "./onDrop"
 import { createOnHover } from "./onHover"
 import { useItemsContext } from "../context"
+import { MouseMovement } from "./mouse"
+import { Direction } from "./geometry"
 
 export const useMyDrop = (props: any, ref: any) => {
   
@@ -13,16 +15,20 @@ export const useMyDrop = (props: any, ref: any) => {
   
   const [{ isOver, canDrop }, dropRef] = useDrop({
     accept: rules,
-    drop: createOnDrop(props, state, api),
+    drop: (item: any, monitor: any) => {
+      api.swapByIds(item.id, props.row.id)
+    },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
-    canDrop: (item, monitor) => {
-      // console.debug("canDrop", item, monitor)
-      return true
+    // canDrop: (item, monitor) => {
+    //   return true
+    // },
+    hover: (dragItem: any, monitor: any) => {
+      console.debug("hover", dragItem)
+      // api.setCurrentHoverIndex(index)
     },
-    hover: createOnHover(props, state, api),
   })
   
   return { useRef: dropRef, isOver, canDrop }

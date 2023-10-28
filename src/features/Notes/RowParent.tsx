@@ -4,16 +4,16 @@ import { useItemsContext } from "./context"
 import { useMyDrag } from "./logic/useMyDrag"
 import { useMyDrop } from "./logic/useMyDrop"
 
-export const RowParent = (props: any) => {
+export const RowParent = (params: any) => {
   
   const { state, api } = useItemsContext()
   
-  const { row, index } = props
+  const { row, index } = params
   // console.debug("CustomRow", row)
   
   const ref = useRef<HTMLDivElement>(null)
-  const drag = useMyDrag(props, ref)
-  const drop = useMyDrop(props, ref)
+  const drag = useMyDrag(params, ref)
+  const drop = useMyDrop(params, ref)
   
   drag.useRef(drop.useRef(ref))
   
@@ -42,13 +42,13 @@ export const RowParent = (props: any) => {
       transition: 'transform 0.5s ease',
       border: `3px solid ${getBorderColor()}`
     }}>
-      <GridRow {...props}  />
+      <GridRow {...params}  />
       {/*{state.itemsList.map((item, index) => {*/}
       {/*  // console.debug(item)*/}
       {/*  if (item.pid !== row.id) return null*/}
       {/*  */}
       {/*  const childProps = {*/}
-      {/*    ...props,*/}
+      {/*    ...params,*/}
       {/*    index,*/}
       {/*    key: item.id,*/}
       {/*    rowId: item.id,*/}
