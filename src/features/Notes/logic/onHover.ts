@@ -1,7 +1,7 @@
-import { XYCoord } from "dnd-core"
 import { IApi } from "../types/IApi"
 import { IState } from "../types/IState"
-import { Baseline } from "./baseline"
+import { Direction, Geometry } from "./geometry"
+import { MouseMovement } from "./mouse"
 
 export function createOnHover(props: any, state: IState, api: IApi) {
   
@@ -11,7 +11,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
   return (dragItem: any, monitor: any) => {
     
     console.debug("hover")
-    console.debug(dragItem, hoverItem)
+    // console.debug(dragItem, hoverItem)
   
     if (!hoverRef.current) {
       return
@@ -19,14 +19,17 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     
     const dragIndex = dragItem.index
     const hoverIndex = props.index
-    console.debug(dragIndex, hoverIndex)
+    // console.debug(dragIndex, hoverIndex)
+  
+    const draggingOffset = monitor.getClientOffset()
+    console.debug(`draggingOffset: [${draggingOffset.x}:${draggingOffset.y}]`)
 
     // Don't replace items with themselves
     if (dragIndex === hoverIndex) {
       return
     }
     
-    return
+    // return
   
     const dragRef = state.itemsRefMap[dragItem.id]
 
@@ -35,24 +38,12 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     const hoverRect = hoverRef.current?.getBoundingClientRect()
   
     const height = dragRect.height
-    
-    // Dragging downwards
-    if (dragIndex < hoverIndex) {
-      const margin = hoverRect.top - dragRect.bottom
-      if (margin < 5) return
   
-      api.setTransform(hoverItem.id, -height)
-      return
-    }
-    
-    // Dragging upwards
-    if (dragIndex > hoverIndex) {
-      const margin = dragRect.top - hoverRect.bottom
-      if (margin < 5) return
-      
-      api.setTransform(hoverItem.id, height)
-      return
-    }
+    const direction = MouseMovement.getDirection(draggingOffset.y)
+    console.debug(`direction: ${direction}`)
+  
+    Geometry.shift(hoverRef.current, direction, height)
+   
   
     // dragItem.index = hoverIndex
   }
