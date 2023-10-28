@@ -20,13 +20,13 @@ export const DataTable = () => {
   const { state, api } = useItemsContext()
   
   const onDragStart = (start: DragStart) => {
-    console.debug("onDragStart", start)
+    // console.debug("onDragStart", start)
   }
   
   const onDragEnd = (result: DropResult) => {
     const destination: DraggableLocation = result.destination
     const source: DraggableLocation = result.source
-    console.debug("onDragEnd", result)
+    // console.debug("onDragEnd", result)
     // api.swap(source.index, destination.index)
   }
   

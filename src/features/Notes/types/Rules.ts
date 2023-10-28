@@ -7,6 +7,6 @@ export const Accepts = {
   [ItemTypes.Section]: [ItemTypes.Item, ItemTypes.Section, ItemTypes.SowisoSet],
   [ItemTypes.SectionItem]: [ItemTypes.SectionItem],
   
-  [ItemTypes.SowisoSet]: [ItemTypes.Item, ItemTypes.SowisoSet, ItemTypes.SowisoItem],
+  [ItemTypes.SowisoSet]: [ItemTypes.Item, ItemTypes.SowisoSet, ItemTypes.Section],
   [ItemTypes.SowisoItem]: [ItemTypes.SowisoItem],
 }

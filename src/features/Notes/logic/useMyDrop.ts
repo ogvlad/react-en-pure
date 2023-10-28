@@ -26,7 +26,7 @@ export const useMyDrop = (props: any, ref: any) => {
     //   return true
     // },
     hover: (dragItem: any, monitor: any) => {
-      console.debug("hover", dragItem)
+      // console.debug("hover", dragItem)
       // api.setCurrentHoverIndex(index)
     },
   })

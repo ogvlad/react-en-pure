@@ -4,11 +4,11 @@ import { IApi } from "../types/IApi"
 export function createOnDrop(props: any, state: IState, api: IApi) {
   return (item: any, monitor: any) => {
     const result = monitor.getItem()
-    console.debug("onDrop", result)
+    // console.debug("onDrop", result)
     
     const dragIndex = item.index
     const hoverIndex = state.currentHoverIndex
-    console.debug("onDrop", dragIndex, hoverIndex)
+    // console.debug("onDrop", dragIndex, hoverIndex)
     
     hideBaseline()
     

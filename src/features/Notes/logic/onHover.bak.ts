@@ -1,7 +1,7 @@
 import { XYCoord } from "dnd-core"
 import { IApi } from "../types/IApi"
 import { IState } from "../types/IState"
-import { BaseLine } from "./baseline"
+import { Baseline } from "./baseline"
 
 export function createOnHover(props: any, state: IState, api: IApi) {
   
@@ -27,10 +27,10 @@ export function createOnHover(props: any, state: IState, api: IApi) {
 
     // Get vertical middle
     const hoverBaselineY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
-    console.debug(`hoverBoundingRect.top: ${hoverBoundingRect.top}`)
-    console.debug(`hoverBoundingRect.bottom: ${hoverBoundingRect.bottom}`)
-    console.debug(`hoverBaselineY: ${hoverBaselineY}`)
-    BaseLine.show(hoverBoundingRect.top + hoverBaselineY)
+    // console.debug(`hoverBoundingRect.top: ${hoverBoundingRect.top}`)
+    // console.debug(`hoverBoundingRect.bottom: ${hoverBoundingRect.bottom}`)
+    // console.debug(`hoverBaselineY: ${hoverBaselineY}`)
+    Baseline.show(hoverBoundingRect.top + hoverBaselineY)
 
     const draggingItem = monitor.getItem()
     // console.debug(draggingItem)
@@ -45,7 +45,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
 
     // Determine mouse position
     const draggingOffset = monitor.getClientOffset()
-    console.debug(`draggingOffset: ${draggingOffset.y}`)
+    // console.debug(`draggingOffset: ${draggingOffset.y}`)
 
     // Get pixels to the top
     const hoverClientY = (draggingOffset as XYCoord).y - hoverBoundingRect.top

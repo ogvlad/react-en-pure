@@ -43,18 +43,18 @@ export const RowParent = (params: any) => {
       border: `3px solid ${getBorderColor()}`
     }}>
       <GridRow {...params}  />
-      {/*{state.itemsList.map((item, index) => {*/}
-      {/*  // console.debug(item)*/}
-      {/*  if (item.pid !== row.id) return null*/}
-      {/*  */}
-      {/*  const childProps = {*/}
-      {/*    ...params,*/}
-      {/*    index,*/}
-      {/*    key: item.id,*/}
-      {/*    rowId: item.id,*/}
-      {/*  }*/}
-      {/*  return (<GridRow {...childProps} style={{ opacity }} />)*/}
-      {/*})}*/}
+      {state.itemsList.map((item, index) => {
+        // console.debug(item)
+        if (item.pid !== row.id) return null
+        
+        const childProps = {
+          ...params,
+          index,
+          key: item.id,
+          rowId: item.id,
+        }
+        return (<GridRow {...childProps} style={{ opacity }} />)
+      })}
     </div>
   )
 }

@@ -35,7 +35,7 @@ export const TheTasks = () => {
   const { entities, selectedTaskIds } = state
   
   const onDragStart = (start: DragStart) => {
-    console.debug("onDragStart", start)
+    // console.debug("onDragStart", start)
     const id: string = start.draggableId
     const selected: Id | null = state.selectedTaskIds.find(
       (taskId: Id): boolean => taskId === id,
@@ -102,7 +102,7 @@ export const TheTasks = () => {
   }
   
   const toggleSelection = (taskId: Id) => {
-    console.debug("toggleSelection", taskId)
+    // console.debug("toggleSelection", taskId)
     const selectedTaskIds: Id[] = state.selectedTaskIds
     const wasSelected: boolean = selectedTaskIds.includes(taskId)
     

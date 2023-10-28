@@ -11,7 +11,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
   
   return (dragItem: any, monitor: any) => {
     
-    console.debug("hover")
+    // console.debug("hover")
     // console.debug(dragItem, hoverItem)
     
     if (!hoverRef.current) {
@@ -23,7 +23,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     // console.debug(dragIndex, hoverIndex)
     
     const draggingOffset = monitor.getClientOffset()
-    console.debug(`draggingOffset: [${draggingOffset.x}:${draggingOffset.y}]`)
+    // console.debug(`draggingOffset: [${draggingOffset.x}:${draggingOffset.y}]`)
     
     // Don't replace items with themselves
     if (dragIndex === hoverIndex) {
@@ -41,7 +41,7 @@ export function createOnHover(props: any, state: IState, api: IApi) {
     const height = dragRect.height
     
     const direction = MouseMovement.getDirection(draggingOffset.y)
-    console.debug(`direction: ${direction}`)
+    // console.debug(`direction: ${direction}`)
     
     const getOffset = () => {
       if (direction === Direction.Undefined) return 0

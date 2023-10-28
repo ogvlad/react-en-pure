@@ -14,7 +14,7 @@ export const DataTable = () => {
   const { state, api } = useItemsContext()
   
   const onDrop = (item: any, monitor: any) => {
-    console.debug("onDrop", item, monitor)
+    // console.debug("onDrop", item, monitor)
   }
   
   const [{ isOver, canDrop }, drop] = useDrop({
