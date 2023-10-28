@@ -36,13 +36,14 @@ export const RowParent = (params: any) => {
     return "red"
   }
   return (
-    <div ref={ref} style={{
-      opacity,
-      transform: `translate3d(0, ${transform || 0}px, 0)`,
-      transition: 'transform 0.5s ease',
-      border: `3px solid ${getBorderColor()}`
-    }}>
-      <GridRow {...params}  />
+    <div ref={ref}
+         style={{
+           opacity,
+           transform: `translate3d(0, ${transform || 0}px, 0)`,
+           transition: "transform 0.5s ease",
+           border: `3px solid ${getBorderColor()}`
+         }}>
+      <GridRow {...params} />
       {state.itemsList.map((item, index) => {
         // console.debug(item)
         if (item.pid !== row.id) return null

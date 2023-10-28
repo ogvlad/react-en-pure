@@ -1,4 +1,4 @@
-export const ItemTypes = {
+export const DndTypes = {
   Table: "Table",
   
   Item: "Item",

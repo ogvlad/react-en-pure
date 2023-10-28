@@ -1,12 +1,12 @@
-import { ItemTypes } from "./ItemTypes"
+import { DndTypes } from "./DndTypes"
 
 export const Accepts = {
-  [ItemTypes.Table]: [ItemTypes.Item, ItemTypes.Section, ItemTypes.SowisoSet],
-  [ItemTypes.Item]: [ItemTypes.Item, ItemTypes.Section, ItemTypes.SowisoSet],
+  [DndTypes.Table]: [DndTypes.Item, DndTypes.Section, DndTypes.SowisoSet],
+  [DndTypes.Item]: [DndTypes.Item, DndTypes.Section, DndTypes.SowisoSet],
   
-  [ItemTypes.Section]: [ItemTypes.Item, ItemTypes.Section, ItemTypes.SowisoSet],
-  [ItemTypes.SectionItem]: [ItemTypes.SectionItem],
+  [DndTypes.Section]: [DndTypes.Item, DndTypes.Section, DndTypes.SowisoSet],
+  [DndTypes.SectionItem]: [DndTypes.SectionItem],
   
-  [ItemTypes.SowisoSet]: [ItemTypes.Item, ItemTypes.SowisoSet, ItemTypes.Section],
-  [ItemTypes.SowisoItem]: [ItemTypes.SowisoItem],
+  [DndTypes.SowisoSet]: [DndTypes.Item, DndTypes.SowisoSet, DndTypes.Section],
+  [DndTypes.SowisoItem]: [DndTypes.SowisoItem],
 }

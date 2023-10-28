@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid"
 import { useDrop } from "react-dnd"
 
 import { getColumns } from "./getColumns"
-import { ItemTypes } from "./types/ItemTypes"
+import { DndTypes } from "./types/DndTypes"
 import { useItemsContext } from "./context"
 import { RowParent } from "./RowParent"
 import { getRowClassName } from "./logic/getRowClassName"
@@ -18,7 +18,7 @@ export const DataTable = () => {
   }
   
   const [{ isOver, canDrop }, drop] = useDrop({
-    accept: [ItemTypes.Item, ItemTypes.Section, ItemTypes.SowisoSet],
+    accept: [DndTypes.Item, DndTypes.Section, DndTypes.SowisoSet],
     drop: onDrop,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
