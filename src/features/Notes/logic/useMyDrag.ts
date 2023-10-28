@@ -17,12 +17,7 @@ export const useMyDrag = (props: any, ref: any) => {
         return { ...row, index: props.index }
       },
       end: (draggedItem, monitor) => {
-        const dragIndex = draggedItem.index
-        const hoverIndex = props.index
-  
-        hideBaseline()
-        // api.swap(dragIndex, hoverIndex)
-        // api.resetTransform()
+        console.debug("onEnd", draggedItem, monitor)
         api.setDragging(null)
       },
     }),

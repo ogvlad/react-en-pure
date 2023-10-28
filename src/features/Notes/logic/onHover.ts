@@ -63,10 +63,10 @@ export function createOnHover(props: any, state: IState, api: IApi) {
       return
     }
   
-    // const hoverTransformSign = dragIndex < hoverIndex ? -1 : 1
-    // api.setTransform(props.row.id, hoverTransformSign * height)
+    const hoverTransformSign = dragIndex < hoverIndex ? -1 : 1
+    api.setTransform(props.row.id, hoverTransformSign * height)
     
-    api.swap(dragIndex, hoverIndex)
+    // api.swap(dragIndex, hoverIndex)
     // Time to actually perform the action
     // moveCard(dragIndex, hoverIndex)
     

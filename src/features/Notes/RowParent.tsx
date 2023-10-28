@@ -25,14 +25,15 @@ export const RowParent = (props: any) => {
   
   const opacity = drag.isDragging || state.dragging.id === row.pid ? 1 : 1
   const transform = state.itemsTransformMap[row.id]
-  console.debug("RowParent", row.id, transform)
+  // console.debug("RowParent", state)
   
-  const transformValue = state.dragging.id ? transform : 0
+  // const transformValue = state.dragging.id ? transform : 0
   
   return (
     <div ref={ref} style={{
       opacity,
-      transform: `translate3d(0, ${transformValue}px, 0)`,
+      transform: `translate3d(0, ${transform || 0}px, 0)`,
+      transition: 'transform 0.5s ease',
     }}>
       <GridRow {...props}  />
       {/*{state.itemsList.map((item, index) => {*/}
