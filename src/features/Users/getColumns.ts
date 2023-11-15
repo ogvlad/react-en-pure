@@ -1,8 +1,7 @@
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid"
-import { CellIndex } from "../Notes/CellIndex"
+import { CellIndex } from "./CellIndex"
 
 export const getColumns = (): GridColDef[] => [
-  { field: 'id', headerName: 'ID', width: 90 },
   {
     field: 'index',
     headerName: '#',
@@ -10,6 +9,7 @@ export const getColumns = (): GridColDef[] => [
     sortable: false,
     renderCell: CellIndex
   },
+  { field: 'id', headerName: 'ID', width: 90 },
   {
     field: 'fullName',
     headerName: 'Full name',

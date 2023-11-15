@@ -3,16 +3,15 @@ import Box from "@mui/material/Box"
 import { DataGrid } from "@mui/x-data-grid"
 
 import { getColumns } from "./getColumns"
-import { useItemsContext } from "../Notes/context"
+import { Characters } from "../../shared/data/characters"
 
 export const DataTable = () => {
   
-  const { state, api } = useItemsContext()
-
+  const [state, setState] = React.useState(Characters)
   return (
     <Box sx={{ height: 800, width: "100%" }}>
       <DataGrid
-        rows={state.itemsList}
+        rows={state}
         columns={getColumns()}
         initialState={{
           pagination: {
