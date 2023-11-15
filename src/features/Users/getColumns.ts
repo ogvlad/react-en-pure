@@ -31,10 +31,10 @@ export const getColumns = (): GridColDef[] => [
     editable: true,
   },
   {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 110,
+    field: 'realm',
+    headerName: 'Realm',
+    type: 'string',
+    width: 210,
     editable: true,
   },
   {

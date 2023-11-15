@@ -7,5 +7,5 @@ export interface Character {
   lastName: string;
   realm?: string;
   family?: Character[];
-  type: CharacterType;
+  type: CharacterType | CharacterType[];
 }
