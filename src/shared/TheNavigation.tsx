@@ -28,7 +28,7 @@ export function TheNavigation() {
         <BottomNavigationAction label="Notes" value={"/notes"} icon={<FavoriteIcon />} />
         <BottomNavigationAction label="Books" value={"/books"} icon={<BookIcon />} />
         <BottomNavigationAction label="Tasks" value={"/tasks"} icon={<LocationOnIcon />} />
-        {/*<BottomNavigationAction label="Users" value={"/users"} icon={<PersonIcon />} />*/}
+        <BottomNavigationAction label="Users" value={"/users"} icon={<PersonIcon />} />
       </BottomNavigation>
     </Box>
   )

@@ -12,6 +12,7 @@ import { HomePage } from "./features/HomePage"
 import { TheTasks } from "./features/Tasks"
 import { TheNotes } from "./features/Notes"
 import { TheBooks } from "./features/Books"
+import { TheUsers } from "./features/Users"
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/tasks",
     element: <TheTasks />
+  },
+  {
+    path: "/users",
+    element: <TheUsers />
   },
 ])
 

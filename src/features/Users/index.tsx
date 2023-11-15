@@ -1,49 +1,15 @@
-import * as React from 'react';
-import { FormControl, useFormControlContext } from '@mui/base/FormControl';
+import * as React from "react"
+import { Root } from "../../shared/Root"
+import { ItemsProvider } from "../Notes/context"
+import { getData } from "../Notes/getData"
+import { DataTable } from "./DataTable"
 
-export default function UseFormControl() {
+export const TheUsers = () => {
   return (
-    <FormControl defaultValue="" required>
-      <CustomInput />
-      <ControlStateDisplay />
-    </FormControl>
-  );
-}
-
-function CustomInput() {
-  const formControlContext = useFormControlContext();
-  
-  if (formControlContext === undefined) {
-    return null;
-  }
-  
-  const { value, required, onChange, disabled, onFocus, onBlur } =
-    formControlContext;
-  
-  return (
-    <input
-      value={value as string}
-      required={required}
-      onChange={onChange}
-      disabled={disabled}
-      onFocus={onFocus}
-      onBlur={onBlur}
-    />
-  );
-}
-
-function ControlStateDisplay() {
-  const formControlContext = useFormControlContext();
-  if (formControlContext === undefined) {
-    return null;
-  }
-  
-  const { filled, focused } = formControlContext;
-  
-  return (
-    <p>
-      {filled ? 'filled' : 'empty'}&nbsp;|&nbsp;
-      {focused ? 'focused' : 'not focused'}
-    </p>
-  );
+    <Root>
+      <ItemsProvider items={getData()}>
+        <DataTable />
+      </ItemsProvider>
+    </Root>
+  )
 }
