@@ -5,6 +5,7 @@ import { DataGrid } from "@mui/x-data-grid"
 import { getColumns } from "./getColumns"
 import { SampleList } from "../../shared/data/SampleList"
 import { flattenCharacters } from "../../shared/data/flatten"
+import { TableFooter } from "./TableFooter"
 
 export const DataTable = () => {
   
@@ -22,6 +23,9 @@ export const DataTable = () => {
               pageSize: 50,
             },
           },
+        }}
+        slots={{
+          footer: TableFooter
         }}
         pageSizeOptions={[5, 10, 50, 100]}
         checkboxSelection
