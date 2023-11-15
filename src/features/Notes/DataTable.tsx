@@ -4,10 +4,10 @@ import { DataGrid } from "@mui/x-data-grid"
 import { useDrop } from "react-dnd"
 
 import { getColumns } from "./getColumns"
-import { DndTypes } from "./types/DndTypes"
 import { useItemsContext } from "./context"
 import { RowParent } from "./RowParent"
 import { getRowClassName } from "./logic/getRowClassName"
+import { DndTypes } from "../../shared/data/DndTypes"
 
 export const DataTable = () => {
   

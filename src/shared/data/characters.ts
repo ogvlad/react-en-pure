@@ -1,7 +1,7 @@
-import { BoxState } from "./types/BoxState"
-import { DndTypes } from "../../shared/data/DndTypes"
+import { Character } from "./Character"
+import { DndTypes } from "./DndTypes"
 
-export const getData = (): BoxState[] => [
+export const Characters = (): Character[] => [
   { id: "s-1", pid: "", lastName: 'Snow', firstName: 'Jon', age: 35, type: DndTypes.Item },
   
   { id: "a-0", pid: "", lastName: 'The Lannisters', firstName: '', age: null, type: DndTypes.Section },

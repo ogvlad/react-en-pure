@@ -3,7 +3,6 @@ import { GridRow } from "@mui/x-data-grid"
 import { useItemsContext } from "./context"
 import { useMyDrag } from "./logic/useMyDrag"
 import { useMyDrop } from "./logic/useMyDrop"
-import { DndTypes } from "./types/DndTypes"
 
 export const RowChild = (props: any) => {
   

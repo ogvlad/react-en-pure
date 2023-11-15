@@ -1,4 +1,4 @@
-import { DndTypes } from "./DndTypes"
+import { DndTypes } from "../../../shared/data/DndTypes"
 
 export const Accepts = {
   [DndTypes.Table]: [DndTypes.Item, DndTypes.Section, DndTypes.SowisoSet],

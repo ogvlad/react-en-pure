@@ -1,17 +1,14 @@
 import { useDrop } from "react-dnd"
 import { Accepts } from "../types/Rules"
-import { createOnDrop } from "./onDrop"
-import { createOnHover } from "./onHover"
 import { useItemsContext } from "../context"
-import { MouseMovement } from "./mouse"
-import { Direction } from "./geometry"
+import { DndTypes } from "../../../shared/data/DndTypes"
 
 export const useMyDrop = (props: any, ref: any) => {
   
   const { state, api } = useItemsContext()
   const { row, index } = props
 
-  const rules = Accepts[row.type]
+  const rules = Accepts[row.type as DndTypes]
   
   const [{ isOver, canDrop }, dropRef] = useDrop({
     accept: rules,
