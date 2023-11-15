@@ -1,6 +1,6 @@
-import { Characters } from "../../shared/data/characters"
+import { SampleList } from "../../shared/data/SampleList"
 
 export const CellIndex = (params: any) => {
-  const rowIndex = Characters.findIndex(row => row.id === params.id);
+  const rowIndex = SampleList.findIndex(row => row.id === params.id);
   return (<div>{rowIndex}</div>)
 }

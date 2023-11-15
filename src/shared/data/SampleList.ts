@@ -1,7 +1,7 @@
 import { Character } from "./Character"
 import { CharacterType } from "./CharacterType"
 
-export const Characters: Character[] = [
+export const SampleList: Character[] = [
   {
     id: "lannister-family",
     firstName: "",
