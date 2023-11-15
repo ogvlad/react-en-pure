@@ -1,10 +1,11 @@
-import { DndTypes } from "./DndTypes"
+import { CharacterType } from "./CharacterType"
 
 export interface Character {
   id: string;
   pid?: string;
   firstName: string;
   lastName: string;
-  type: DndTypes;
+  realm?: string;
   family?: Character[];
+  type: CharacterType;
 }
