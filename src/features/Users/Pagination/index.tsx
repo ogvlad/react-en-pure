@@ -9,10 +9,9 @@ import { usePaginationContext } from "./context"
 export const Pagination = () => {
   
   const ctx = usePaginationContext()
-  const { page, pageSize, totalPages, counts } = ctx.state
   const { getTextDisplayedRows } = ctx.api
 
-  const displayedRows = getTextDisplayedRows(page, pageSize, totalPages, counts)
+  const displayedRows = getTextDisplayedRows()
 
   return (
     <Container className={"MuiTablePagination-root Cirrus-pagination"}>

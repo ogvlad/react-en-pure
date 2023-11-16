@@ -18,6 +18,9 @@ export function PaginationProvider(props: IPaginationProps & PropsWithChildren<{
   const [pageSize, setPageSize] = useState(initialPageSize)
   const [counts, setCounts] = useState(new PageCounts())
   
+  const getPagesCount_ = createGetPagesCountFunc(props)
+  const getTextDisplayedRows_ = createTextDisplayedRowsFunc(props)
+  
   const context: IContext = {
     props,
     state: {
@@ -31,8 +34,8 @@ export function PaginationProvider(props: IPaginationProps & PropsWithChildren<{
       setPageSize,
       setTotalPages,
       setCounts,
-      getPagesCount: createGetPagesCountFunc(props),
-      getTextDisplayedRows: createTextDisplayedRowsFunc(props),
+      getPagesCount: () => 0,
+      getTextDisplayedRows: () => "",
     }
   }
   
