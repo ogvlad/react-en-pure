@@ -5,13 +5,13 @@ import { SelectChangeEvent } from "@mui/material/Select/SelectInput"
 
 export const RowsPerPage = (props: RowsPerPageProps) => {
   
-  const { options, onChange, defaultPageSize } = props
+  const { options, onChange, pageSize } = props
   return (
     <Container>
       <p>Rows per page:</p>
       <Select
         variant={"standard"}
-        value={defaultPageSize}
+        value={pageSize}
         onChange={onChange}
         label=""
         disableUnderline
@@ -29,7 +29,7 @@ export const RowsPerPage = (props: RowsPerPageProps) => {
 export class RowsPerPageProps {
   options: number[] = [10, 30, 50, 100]
   onChange?: (event: SelectChangeEvent<number>, child: React.ReactNode) => void = () => {}
-  defaultPageSize?: number = 10
+  pageSize?: number = 10
 }
 
 const Container = styled("div")({

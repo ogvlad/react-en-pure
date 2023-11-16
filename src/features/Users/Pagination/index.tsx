@@ -1,16 +1,29 @@
-import React from "react"
+import React, { useState } from "react"
 import { styled } from "@mui/material"
 import IconButton from "@mui/material/IconButton"
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft"
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
 import { RowsPerPage } from "./RowsPerPage"
+import { IPaginationProps, PageCounts } from "./types"
 
-export const Pagination = (props: any) => {
+export const Pagination = (props: IPaginationProps) => {
+  
   console.debug(props)
+  
+  const { total, options, initialPageSize } = props
+  
+  const [page, setPage] = useState(0)
+  const [pageSize, setPageSize] = useState(initialPageSize)
+  const [counts, setCounts] = useState(new PageCounts())
+  
+  const onPageSizeChange = (event: any) => {
+    setPageSize(event.target.value)
+  }
+  
   return (
     <Container className={"MuiTablePagination-root Cirrus-pagination"}>
 
-      <RowsPerPage options={[5, 10, 15, 30, 50, 100]} defaultPageSize={5} />
+      <RowsPerPage options={options} pageSize={pageSize} onChange={onPageSizeChange} />
 
       <div className={"MuiTablePagination-displayedRows"}>1&ndash;50(89) of 65</div>
 

@@ -17,17 +17,17 @@ export const DataTable = () => {
       <DataGrid
         rows={state}
         columns={getColumns()}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 50,
-            },
-          },
-        }}
         slots={{
           footer: TableFooter
         }}
-        pageSizeOptions={[5, 10, 50, 100]}
+        slotProps={{
+          footer: {
+            // @ts-ignore
+            total: state.length,
+            options: [5, 10, 30, 50, 100],
+            initialPageSize: 5
+          }
+        }}
         checkboxSelection
         disableRowSelectionOnClick
       />

@@ -7,21 +7,22 @@ const Container = styled("div")({
   justifyContent: "space-between",
   alignItems: "center",
   minHeight: "52px",
-  borderTop: "1px solid rgb(224, 224, 224)"
-})
-
-const SelectedRowCount = styled("div")({
-  display: "flex",
-  alignItems: "center",
-  margin: "0px 16px",
+  borderTop: "1px solid rgb(224, 224, 224)",
+  
+  ".MuiDataGrid-selectedRowCount": {
+    margin: "0px 16px",
+  }
 })
 
 export const TableFooter = (props: any) => {
   console.debug(props)
+  
+  const { total, options, initialPageSize } = props
+  
   return (
     <Container className={"MuiDataGrid-footerContainer"}>
-      <SelectedRowCount className={"MuiDataGrid-selectedRowCount"}>34 rows selected</SelectedRowCount>
-      <Pagination />
+      <div className={"MuiDataGrid-selectedRowCount"}>34 rows selected</div>
+      <Pagination total={total} options={options} initialPageSize={initialPageSize} />
     </Container>
   )
 }
