@@ -8,8 +8,8 @@ export const RowsPerPage = (props: RowsPerPageProps) => {
   const { options, onChange, defaultPageSize } = props
   return (
     <Container>
-      <LabelText>Rows per page:</LabelText>
-      <PageSizeSelector
+      <p>Rows per page:</p>
+      <Select
         variant={"standard"}
         value={defaultPageSize}
         onChange={onChange}
@@ -20,7 +20,7 @@ export const RowsPerPage = (props: RowsPerPageProps) => {
             {value.toString()}
           </MenuItem>
         ))}
-      </PageSizeSelector>
+      </Select>
     </Container>
   )
 }
@@ -33,16 +33,16 @@ export class RowsPerPageProps {
 
 const Container = styled("div")({
   display: "flex",
-})
-
-const LabelText = styled("p")({
-  display: "flex",
-  alignItems: "center",
-})
-
-const PageSizeSelector = styled(Select)({
-  display: "flex",
-  alignItems: "center",
-  marginLeft: "8px",
-  marginRight: "32px",
+  
+  "p": {
+    display: "flex",
+    alignItems: "center",
+  },
+  
+  ".MuiInputBase-root": {
+    display: "flex",
+    alignItems: "center",
+    marginLeft: "8px",
+    marginRight: "32px",
+  }
 })
