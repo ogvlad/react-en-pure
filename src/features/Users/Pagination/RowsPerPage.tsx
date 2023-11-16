@@ -2,10 +2,19 @@ import React from "react"
 import { styled } from "@mui/material"
 import { MenuItem, Select } from "@mui/material"
 import { SelectChangeEvent } from "@mui/material/Select/SelectInput"
+import { usePaginationContext } from "./context"
 
-export const RowsPerPage = (props: RowsPerPageProps) => {
+export const RowsPerPage = () => {
   
-  const { options, onChange, pageSize } = props
+  const ctx = usePaginationContext()
+  const { options } = ctx.props
+  const { pageSize } = ctx.state
+  const { setPageSize } = ctx.api
+  
+  const onChange = (event: any) => {
+    setPageSize(event.target.value)
+  }
+  
   return (
     <Container>
       <p>Rows per page:</p>
@@ -28,8 +37,8 @@ export const RowsPerPage = (props: RowsPerPageProps) => {
 
 export class RowsPerPageProps {
   options: number[] = [10, 30, 50, 100]
+  value?: number = 10
   onChange?: (event: SelectChangeEvent<number>, child: React.ReactNode) => void = () => {}
-  pageSize?: number = 10
 }
 
 const Container = styled("div")({

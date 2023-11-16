@@ -4,46 +4,34 @@ import IconButton from "@mui/material/IconButton"
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft"
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
 import { RowsPerPage } from "./RowsPerPage"
-import { IPaginationProps, PageCounts } from "./types"
 import { useDisplayedRows } from "./hooks/useDisplayedRows"
-import { useGetPagesCount } from "./hooks/useGetPagesCount"
+import { usePaginationContext } from "./context"
 
-export const Pagination = (props: IPaginationProps) => {
+export const Pagination = () => {
   
-  console.debug(props)
+  const ctx = usePaginationContext()
   
-  const { total, options, initialPageSize } = props
-  
-  const [page, setPage] = useState(0)
-  const [pageSize, setPageSize] = useState(initialPageSize)
-  const [counts, setCounts] = useState(new PageCounts())
-  
-  const getPagesCount = useGetPagesCount(props)
   const getTextDisplayedRows = useDisplayedRows(props)
   
-  const onPageSizeChange = (event: any) => {
-    setPageSize(event.target.value)
-  }
-  
-  const pagesCount = getPagesCount(pageSize, total, counts)
+
   const displayedRows = getTextDisplayedRows(page, pageSize, total, counts)
 
   return (
     <Container className={"MuiTablePagination-root Cirrus-pagination"}>
-
-      <RowsPerPage options={options} pageSize={pageSize} onChange={onPageSizeChange} />
-
+    
+      <RowsPerPage />
+    
       <div className={"MuiTablePagination-displayedRows"}>{displayedRows}</div>
-
+    
       <div className={"MuiTablePagination-actions"}>
-        <IconButton aria-label="Go to previous page">
+        <IconButton aria-label="Go to previous page" onClick={}>
           <KeyboardArrowLeftIcon />
         </IconButton>
         <IconButton aria-label="Go to next page">
           <KeyboardArrowRightIcon />
         </IconButton>
       </div>
-
+  
     </Container>
   )
 }

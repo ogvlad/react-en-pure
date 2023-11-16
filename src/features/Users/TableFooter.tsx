@@ -1,6 +1,7 @@
 import React from "react"
 import { styled } from "@mui/material"
 import { Pagination } from "./Pagination"
+import { PaginationProvider } from "./Pagination/context"
 
 const Container = styled("div")({
   display: "flex",
@@ -21,8 +22,13 @@ export const TableFooter = (props: any) => {
   
   return (
     <Container className={"MuiDataGrid-footerContainer"}>
+      
       <div className={"MuiDataGrid-selectedRowCount"}>34 rows selected</div>
-      <Pagination total={total} options={options} initialPageSize={initialPageSize} />
+      
+      <PaginationProvider  total={total} options={options} initialPageSize={initialPageSize}>
+        <Pagination />
+      </PaginationProvider>
+      
     </Container>
   )
 }

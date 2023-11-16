@@ -1,12 +1,14 @@
-import { GetPagesCountFunc, IPaginationProps, PageCounts, TextDisplayedRowsFunc } from "../types"
+import { GetPagesCountFunc } from "../types/GetPagesCountFunc"
+import { PageCounts } from "../types/PageCounts"
+import { usePaginationContext } from "../context"
 
-export const useGetPagesCount = (props: IPaginationProps): GetPagesCountFunc => {
-
-  const { getPagesCount } = props
+export const useGetPagesCount = (): GetPagesCountFunc => {
+  
+  const ctx = usePaginationContext()
   
   const defaultFunc: GetPagesCountFunc = (pageSize: number, total: number, counts: PageCounts) => {
     return total / pageSize
   }
   
-  return getPagesCount ?? defaultFunc
+  return ctx.props.getPagesCount ?? defaultFunc
 }
