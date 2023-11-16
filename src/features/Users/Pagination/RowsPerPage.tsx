@@ -14,6 +14,7 @@ export const RowsPerPage = (props: RowsPerPageProps) => {
         value={defaultPageSize}
         onChange={onChange}
         label=""
+        disableUnderline
       >
         {options.map((value) => (
           <MenuItem key={value} value={value}>
