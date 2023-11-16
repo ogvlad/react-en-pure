@@ -2,6 +2,8 @@ import React, { createContext, PropsWithChildren, useContext, useState } from "r
 import { IContext } from "../types/IContext"
 import { PageCounts } from "../types/PageCounts"
 import { IPaginationProps } from "../types/IPaginationProps"
+import { createTextDisplayedRowsFunc } from "./createTextDisplayedRowsFunc"
+import { createGetPagesCountFunc } from "./createGetPagesCountFunc"
 
 const TheContext = createContext({} as IContext)
 
@@ -29,6 +31,8 @@ export function PaginationProvider(props: IPaginationProps & PropsWithChildren<{
       setPageSize,
       setTotalPages,
       setCounts,
+      getPagesCount: createGetPagesCountFunc(props),
+      getTextDisplayedRows: createTextDisplayedRowsFunc(props),
     }
   }
   

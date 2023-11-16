@@ -1,7 +1,9 @@
-import { IPaginationProps, PageCounts, TextDisplayedRowsFunc } from "../types"
+import { TextDisplayedRowsFunc } from "../types/TextDisplayedRowsFunc"
+import { PageCounts } from "../types/PageCounts"
+import { IPaginationProps } from "../types/IPaginationProps"
 
-export const useDisplayedRows = (props: IPaginationProps): TextDisplayedRowsFunc => {
-
+export const createTextDisplayedRowsFunc = (props: IPaginationProps): TextDisplayedRowsFunc => {
+  
   const { getTextDisplayedRows } = props
   
   const defaultFunc = (page: number, pageSize: number, total: number, counts: PageCounts) => {

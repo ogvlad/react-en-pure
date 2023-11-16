@@ -1,14 +1,12 @@
 import { GetPagesCountFunc } from "../types/GetPagesCountFunc"
 import { PageCounts } from "../types/PageCounts"
-import { usePaginationContext } from "../context"
+import { IPaginationProps } from "../types/IPaginationProps"
 
-export const useGetPagesCount = (): GetPagesCountFunc => {
-  
-  const ctx = usePaginationContext()
+export const createGetPagesCountFunc = (props: IPaginationProps): GetPagesCountFunc => {
   
   const defaultFunc: GetPagesCountFunc = (pageSize: number, total: number, counts: PageCounts) => {
     return total / pageSize
   }
   
-  return ctx.props.getPagesCount ?? defaultFunc
+  return props.getPagesCount ?? defaultFunc
 }
