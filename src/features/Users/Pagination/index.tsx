@@ -14,6 +14,9 @@ export const Pagination = () => {
   const { getTextDisplayedRows } = ctx.api
 
   const displayedRows = getTextDisplayedRows()
+  const totalPages = ctx.api.getPagesCount()
+  
+  console.debug({ ...ctx, totalPages })
 
   return (
     <Container className={"MuiTablePagination-root Cirrus-pagination"}>

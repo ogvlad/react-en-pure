@@ -16,7 +16,7 @@ const Container = styled("div")({
 })
 
 export const TableFooter = (props: any) => {
-  console.debug(props)
+  // console.debug(props)
   
   const { totalRows, options, initialPageSize } = props
   
