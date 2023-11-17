@@ -4,14 +4,16 @@ import { useGridApiContext } from "@mui/x-data-grid"
 
 import { Pagination } from "./Pagination"
 import { PaginationProvider } from "./Pagination/context"
+import { ITableFooterProps } from "./ITableFooterProps"
 
-export const TableFooter = (props: any) => {
+export const TableFooter = (props: ITableFooterProps) => {
   
   const apiRef = useGridApiContext()
   const selectedRows = apiRef.current?.getSelectedRows()
   const selectedRowCount = selectedRows.size
   
-  const { totalRows, options, initialPageSize, children } = props
+  const {totalRows, options, initialPageSize, children } = props as any
+  const { getPagesCount, getTextDisplayedRows } = props
   
   return (
     <Container className={"MuiDataGrid-footerContainer"}>
@@ -19,7 +21,7 @@ export const TableFooter = (props: any) => {
       <div className={"MuiDataGrid-selectedRowCount"}>{selectedRowCount} row(s) selected</div>
       <div>{children}</div>
       
-      <PaginationProvider totalRows={totalRows} options={options} initialPageSize={initialPageSize}>
+      <PaginationProvider totalRows={totalRows} options={options} initialPageSize={initialPageSize} getPagesCount={getPagesCount} getTextDisplayedRows={getTextDisplayedRows} >
         <Pagination />
       </PaginationProvider>
     
