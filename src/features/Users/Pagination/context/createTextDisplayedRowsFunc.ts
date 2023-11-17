@@ -7,7 +7,7 @@ export const createTextDisplayedRowsFunc = (props: IPaginationProps): TextDispla
   
   const defaultFunc: TextDisplayedRowsFunc = ({ page, pageSize, totalRows}) => {
     const start = page * pageSize + 1
-    const end = Math.min(start + pageSize, totalRows)
+    const end = Math.min(page * pageSize + pageSize, totalRows)
     return `${start}-${end} of ${totalRows}`
   }
   

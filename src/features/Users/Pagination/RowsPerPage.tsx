@@ -9,10 +9,11 @@ export const RowsPerPage = () => {
   const ctx = usePaginationContext()
   const { options } = ctx.props
   const { pageSize } = ctx.state
-  const { setPageSize } = ctx.api
+  const { setPage, setPageSize } = ctx.api
   
   const onChange = (event: any) => {
     setPageSize(event.target.value)
+    setPage(0)
   }
   
   return (
