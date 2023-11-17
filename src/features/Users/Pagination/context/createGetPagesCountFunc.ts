@@ -3,8 +3,8 @@ import { IPaginationProps } from "../types/IPaginationProps"
 
 export const createGetPagesCountFunc = (props: IPaginationProps): GetPagesCountFunc => {
   
-  const defaultFunc: GetPagesCountFunc = ({total, pageSize}) => {
-    return total / pageSize
+  const defaultFunc: GetPagesCountFunc = ({totalRows, pageSize}) => {
+    return totalRows / pageSize
   }
   
   return props.getPagesCount ?? defaultFunc

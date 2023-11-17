@@ -1,8 +1,8 @@
 import { PageCounts } from "./PageCounts"
 
 interface Args {
+  totalRows: number
   pageSize: number
-  total: number
   counts: PageCounts
 }
 

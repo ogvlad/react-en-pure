@@ -10,7 +10,7 @@ import { useActions } from "./hooks/useActions"
 export const Pagination = () => {
   
   const ctx = usePaginationContext()
-  const { onClickPrev, onClickNext } = useActions()
+  const { onClickPrev, onClickNext, isPrevDisabled, isNextDisabled } = useActions()
   const { getTextDisplayedRows } = ctx.api
 
   const displayedRows = getTextDisplayedRows()
@@ -23,10 +23,10 @@ export const Pagination = () => {
       <div className={"MuiTablePagination-displayedRows"}>{displayedRows}</div>
     
       <div className={"MuiTablePagination-actions"}>
-        <IconButton aria-label="Go to previous page" onClick={onClickPrev}>
+        <IconButton aria-label="Go to previous page" onClick={onClickPrev} disabled={isPrevDisabled}>
           <KeyboardArrowLeftIcon />
         </IconButton>
-        <IconButton aria-label="Go to next page" onClick={onClickNext}>
+        <IconButton aria-label="Go to next page" onClick={onClickNext} disabled={isNextDisabled}>
           <KeyboardArrowRightIcon />
         </IconButton>
       </div>

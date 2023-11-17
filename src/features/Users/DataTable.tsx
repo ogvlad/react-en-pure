@@ -23,7 +23,7 @@ export const DataTable = () => {
         slotProps={{
           footer: {
             // @ts-ignore
-            total: state.length,
+            totalRows: state.length,
             options: [5, 10, 30, 50, 100],
             initialPageSize: 5
           }

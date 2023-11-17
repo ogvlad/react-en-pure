@@ -18,14 +18,14 @@ const Container = styled("div")({
 export const TableFooter = (props: any) => {
   console.debug(props)
   
-  const { total, options, initialPageSize } = props
+  const { totalRows, options, initialPageSize } = props
   
   return (
     <Container className={"MuiDataGrid-footerContainer"}>
       
       <div className={"MuiDataGrid-selectedRowCount"}>34 rows selected</div>
       
-      <PaginationProvider  total={total} options={options} initialPageSize={initialPageSize}>
+      <PaginationProvider totalRows={totalRows} options={options} initialPageSize={initialPageSize}>
         <Pagination />
       </PaginationProvider>
       
