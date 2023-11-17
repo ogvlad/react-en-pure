@@ -5,10 +5,12 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft"
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
 import { RowsPerPage } from "./RowsPerPage"
 import { usePaginationContext } from "./context"
+import { useActions } from "./hooks/useActions"
 
 export const Pagination = () => {
   
   const ctx = usePaginationContext()
+  const { onClickPrev, onClickNext } = useActions()
   const { getTextDisplayedRows } = ctx.api
 
   const displayedRows = getTextDisplayedRows()
@@ -21,10 +23,10 @@ export const Pagination = () => {
       <div className={"MuiTablePagination-displayedRows"}>{displayedRows}</div>
     
       <div className={"MuiTablePagination-actions"}>
-        <IconButton aria-label="Go to previous page">
+        <IconButton aria-label="Go to previous page" onClick={onClickPrev}>
           <KeyboardArrowLeftIcon />
         </IconButton>
-        <IconButton aria-label="Go to next page">
+        <IconButton aria-label="Go to next page" onClick={onClickNext}>
           <KeyboardArrowRightIcon />
         </IconButton>
       </div>
