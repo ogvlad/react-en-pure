@@ -5,7 +5,7 @@ import { DataGrid } from "@mui/x-data-grid"
 import { getColumns } from "./getColumns"
 import { SampleList } from "../../shared/data/SampleList"
 import { flattenCharacters } from "../../shared/data/flatten"
-import { TableFooter } from "./TableFooter"
+import { TableFooter } from "./Footer/TableFooter"
 
 export const DataTable = () => {
   
