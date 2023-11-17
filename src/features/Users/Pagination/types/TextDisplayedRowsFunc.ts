@@ -1,3 +1,10 @@
 import { PageCounts } from "./PageCounts"
 
-export type TextDisplayedRowsFunc = (page: number, pageSize: number, total: number, counts: PageCounts) => string
+interface Args {
+  page: number
+  pageSize: number
+  totalRows: number
+  counts: PageCounts
+}
+
+export type TextDisplayedRowsFunc = (args: Args) => string

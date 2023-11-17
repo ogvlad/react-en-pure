@@ -33,7 +33,7 @@ export function PaginationProvider(props: IPaginationProps & PropsWithChildren<{
       setCounts,
       
       getPagesCount: () => getPagesCount_({pageSize, totalRows, counts}),
-      getTextDisplayedRows: () => "",
+      getTextDisplayedRows: () => getTextDisplayedRows_({page, pageSize, totalRows, counts}),
     }
   }
   
