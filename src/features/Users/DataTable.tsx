@@ -18,7 +18,7 @@ export const DataTable = () => {
         rows={state}
         columns={getColumns()}
         slots={{
-          footer: TableFooter
+          footer: TheFooter
         }}
         slotProps={{
           footer: {
@@ -34,3 +34,6 @@ export const DataTable = () => {
     </Box>
   )
 }
+
+const TheFooter = (props: any) => <TableFooter {...props}>Total score: 49</TableFooter>
+
