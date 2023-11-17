@@ -7,7 +7,7 @@ export const useActions = () => {
   const { setPage, getPagesCount } = ctx.api
   
   const isPrevDisabled = page <= 0
-  const isNextDisabled = page >= getPagesCount()
+  const isNextDisabled = page >= getPagesCount() - 1
   
   const onClickPrev = () => {
     console.debug("onClickPrev", page)
