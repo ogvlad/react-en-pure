@@ -1,6 +1,5 @@
 import React, { createContext, PropsWithChildren, useContext, useState } from "react"
 import { IContext } from "../types/IContext"
-import { PageCounts } from "../types/PageCounts"
 import { IPaginationProps } from "../types/IPaginationProps"
 import { createTextDisplayedRowsFunc } from "./createTextDisplayedRowsFunc"
 import { createGetPagesCountFunc } from "./createGetPagesCountFunc"
